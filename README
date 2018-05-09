@@ -1,0 +1,20 @@
+#API SAMPLE CALL
+https://staging.artworkarchive.com/api/profile/sophia-rouhana
+
+#WP PLUGIN GUIDELINES
+https://codex.wordpress.org/Writing_a_Plugin
+
+#WP CODING STANDARDS (PHP)
+https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/
+
+#WP DOCUMENTATION STANDARDS (PHP)
+https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php/
+
+#WP FREE HOST & TEST WEBSITE
+Username: jonbarlo
+
+To set your password, visit the following address:
+
+<http://aa.istemporary.com/wp-login.php?action=rp&key=nha3YLSw06XyIfkpyc2P&login=jonbarlo>
+
+http://aa.istemporary.com/wp-login.php
