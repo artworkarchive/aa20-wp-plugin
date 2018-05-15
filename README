@@ -1,82 +1,41 @@
-# Artwork Archive WordPress Plugin
+#Artwork Archive WordPress Plugin
 
 One Paragraph of project description goes here
 
-## Getting Started
+##Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+###Prerequisites
 
 Just need to have a WordPress website already running.
 
-```
-Give examples
-```
+###Installing
 
-### Installing
+Just go to your WordPress website Dashboard and add this plugin, then just add the following line to any WordPress page:
 
-Just go to your WordPress website Dashboard and add this plugin.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And finally simple add the following line to any WordPress page you want
-
-```
-[artworkarchive_artist_gallery user_slug="your-artist-name"]
-```
+`[artworkarchive_artist_gallery user_slug="your-artist-name"]`
 
 Replace `your-artist-name` with your artwork archive artist name
 
-### API Sample Call (Raw)
-https://staging.artworkarchive.com/api/profile/your-artist-name
+* [Artwork Archive Working API Example](https://staging.artworkarchive.com/api/profile/sophia-rouhana) - Artwork Archive API Sample Call For Artist Called "Sophia Rouhana"
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Authors
+##Authors
 
 * **John Feustel** - *Owner & Initial work* - [John Feustel](https://github.com/artworkarchive)
 * **Jonathan Barquero** - *Initial work* - [Jonathan Barquero](https://github.com/jonbarlo)
 
-## License
+##License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+##Built With
 
-* Tip to anyone who's code was inpiration
-
-#### WP PLUGIN GUIDELINES
-https://codex.wordpress.org/Writing_a_Plugin
-
-#### WP CODING STANDARDS (PHP)
-https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/
-
-#### WP DOCUMENTATION STANDARDS (PHP)
-https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php/
-
-#### WP SHORTCODE API DOCUMENTATION
-https://codex.wordpress.org/Shortcode_API
-
-#### ARTWORK ARCHIVE WP TEST WEBSITE
-http://aa.istemporary.com/wp-login.php
-
-#### WP BASE DOCUMENTATION
-https://www.wpexplorer.com/writing-simple-wordpress-plugin/
-
-http://www.wpbeginner.com/plugins/how-to-add-wordpress-widgets-in-post-and-page-content/
-
-https://premium.wpmudev.org/blog/create-custom-wordpress-widget/
-
-http://blog.teamtreehouse.com/hooks-wordpress-actions-filters-examples
-
-#### Instagram WP Plugin Sample
-https://plugins.trac.wordpress.org/browser/instagram-feed/trunk/instagram-feed.php
+* [WP Plugin Guidelines](https://codex.wordpress.org/Writing_a_Plugin) - WordPress Plugin Guidelines
+* [WP Coding Standards for PHP](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/) - Base WP PHP Coding Guidelines
+* [WP Documentation Standards for PHP](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php/) - More PHP Base Guidelines
+* [WP Shortcode API](https://codex.wordpress.org/Shortcode_API) - WordPress Plugin Shortcode API Explained
+* [Artwork Archive WordPress Test Website](http://aa.istemporary.com/wp-login.php) - Artwork Archive API Call
+* [WP Base](https://www.wpexplorer.com/writing-simple-wordpress-plugin/) - WordPress Plugin Base Documentation
+* [WP Hooks](http://blog.teamtreehouse.com/hooks-wordpress-actions-filters-examples) - WordPress Plugin Custom Hooks Documentation
+* [Instagram WP Plugin Sample](https://plugins.trac.wordpress.org/browser/instagram-feed/trunk/instagram-feed.php) - WordPress Plugin for Instagram
