@@ -10,11 +10,20 @@ https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/
 #WP DOCUMENTATION STANDARDS (PHP)
 https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php/
 
-#WP FREE HOST & TEST WEBSITE
-Username: jonbarlo
+#WP SHORTCODE API DOCUMENTATION
+https://codex.wordpress.org/Shortcode_API
 
-To set your password, visit the following address:
-
-<http://aa.istemporary.com/wp-login.php?action=rp&key=nha3YLSw06XyIfkpyc2P&login=jonbarlo>
-
+#ARTWORK ARCHIVE WP TEST WEBSITE
 http://aa.istemporary.com/wp-login.php
+
+#WP BASE DOCUMENTATION
+https://www.wpexplorer.com/writing-simple-wordpress-plugin/
+
+http://www.wpbeginner.com/plugins/how-to-add-wordpress-widgets-in-post-and-page-content/
+
+https://premium.wpmudev.org/blog/create-custom-wordpress-widget/
+
+http://blog.teamtreehouse.com/hooks-wordpress-actions-filters-examples
+
+##instagram plugin sample
+https://plugins.trac.wordpress.org/browser/instagram-feed/trunk/instagram-feed.php

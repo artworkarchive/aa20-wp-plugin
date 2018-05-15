@@ -10,16 +10,16 @@ class ArtworkArchiveApiHelper {
 	//---------------------
 	//define core wp-plugin functions
 	//---------------------
-
+	//Generates HTML for all modal popups
 	public static function generate_public_pieces_modal_popups($user_slug)
 	{
 		$action = "GET";
-		//$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile() . $user_slug;
-		$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile();
-		$parameters = array("artist_slug" => $user_slug);
+		$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile() . $user_slug;
+		//$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile();
+		//$parameters = array("user" => $user_slug);
+		$parameters = null;
 		$result = CurlHelper::perform_http_request($action, $url, $parameters);
 		$json_decoded = json_decode($result,true);
-		//echo print_r($json_decoded);
 		$html_popups = "";
 
 		for ($i = 0; $i < count($json_decoded['public_pieces']); $i++) {
@@ -43,41 +43,17 @@ class ArtworkArchiveApiHelper {
 		return $html_popups;
 	}
 
-	function generate_css_styles()
-	{
-		return '<link rel="stylesheet" href="css/style.css" type="text/css">
-				<link rel="stylesheet" href="css/modal.css" type="text/css">';
-	}
-/*
-	public static function generate_public_pieces_hiddens($user_slug)
-	{
-		$action = "GET";
-		$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile();
-		$parameters = array("artist_slug" => $user_slug);
-		$result = CurlHelper::perform_http_request($action, $url, $parameters);
-		$json_decoded = json_decode($result,true);
-		//echo print_r($json_decoded);
-		$html = "";
-
-		for ($i = 0; $i < count($json_decoded['public_pieces']); $i++) {
-			$html = $html . '<input type="hidden" id="individual-piece-'.$json_decoded['public_pieces'][$i]['slug'].'" value="'.$json_decoded['public_pieces'][$i]['name'].'">';
-		}
-
-		return $html;
-	}
-*/
 	// This method pull an user's public profile info
 	// Parameter description:
 	// user_id= artwork archive user's id
-	public static function get_user_public_profile_information($user_slug)
-	{
+	public static function get_user_public_pieces_information($user_slug){
 		$action = "GET";
-		//$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile() . $user_slug;
-		$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile();
-		$parameters = array("artist_slug" => $user_slug);
+		$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile() . $user_slug;
+		//$url = ArtworkArchiveApiConfig::base_api_url_for_user_public_profile();
+		//$parameters = array("user" => $user_slug);
+		$parameters = null;
 		$result = CurlHelper::perform_http_request($action, $url, $parameters);
 		$json_decoded = json_decode($result,true);
-		//echo print_r($json_decoded);
 		$html_for_pieces = "";
 		$html_popups = "";
 
@@ -100,33 +76,9 @@ class ArtworkArchiveApiHelper {
 		}
 
 		return
-
-		'<div class="profile-section">
-		  <img src="'.$json_decoded['public_user_image_url'].'" alt="John" style="width:100%">
-		  <a class="artist-name" href="'.$json_decoded['share_url'].'">'.$json_decoded['name'].'</a>
-		  <div class="public-social-links">
-		  	<a href="'.$json_decoded['facebook_url'].'">&nbsp;<i class="fa fa-facebook"></i>&nbsp;</a>
-		    <a href="'.$json_decoded['twitter_url'].'">&nbsp;<i class="fa fa-twitter"></i>&nbsp;</a>
-		    <a href="'.$json_decoded['instagram_url'].'">&nbsp;<i class="fa fa-instagram"></i>&nbsp;</a>
-		 </div>
-		 <p><button class="contact-artist-button" onclick="location.href=\''.$json_decoded['email_share'].'\'">Message</button></p>
-		</div>
-		
-		<div class="pieces-section">'
+		'<div class="pieces-section">'
 			. $html_for_pieces .
 		'</div>';
-	}
-
-	// This method pull an user's public profile info
-	// Parameter description:
-	// user_id= artwork archive user's id
-	public function get_user_public_pieces_information($user_id){
-		$curlHelper = new CurlHelper();
-		$action = "GET";
-		$url = "https://www.artworkarchive.com/public-profile-page";
-		$parameters = array("param" => "value");
-		$result = $curlHelper.perform_http_request();
-		return $result;
 	}
 
 }
