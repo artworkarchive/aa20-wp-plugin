@@ -6,7 +6,7 @@
 	Plugin Name: Artwork Archive Artist's Gallery Plugin
 	Plugin URI: https://github.com/artworkarchive/aa20-wp-plugin
 	Description: Artwork Archive wordpress plugin which lets the user to pull down public data, including user's public pieces as well as user's public general information
-	Version: 1.1.6
+	Version: 1.1.7
 	Author: Artwork Archive (John Feustel & Jonathan Barquero)
 	Author URI: http://www.artworkarchive.com/
     License: GPLv2 or later

@@ -29,14 +29,24 @@ class ArtworkArchiveApiHelper {
 		        <a href="#x" class="overlay-modal" id="individual-piece-'.$json_decoded['public_pieces'][$i]['slug'].'"></a>
 		        <div class="popup">
 		            <img src="'.$json_decoded['public_pieces'][$i]['public_piece_image_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'" class="image">
-		            <p>'.$piece_title.'</p>
-		            <div>
-						<label>Inventory No.: '.$json_decoded['public_pieces'][$i]['inventory_number'].'</label>
-					</div>
-		            <div>
-						<label>Size: '.$json_decoded['public_pieces'][$i]['width'].' x '.$json_decoded['public_pieces'][$i]['height'].'</label>
-		            </div>
-		            <a class="close" href="#close"></a>
+					<p>'.$piece_title.'</p>';
+					if(isset($json_decoded['public_pieces'][$i]['price']))
+					{
+						$html_popups = $html_popups . 
+						'<div>
+							<label>Inventory No.: '.$json_decoded['public_pieces'][$i]['inventory_number'].'</label>
+						</div>';
+					}
+					
+					if(isset($json_decoded['public_pieces'][$i]['width']) && isset($json_decoded['public_pieces'][$i]['height']))
+					{
+						$html_popups = $html_popups . 
+						'<div>
+							<label>Size: '.$json_decoded['public_pieces'][$i]['width'].' x '.$json_decoded['public_pieces'][$i]['height'].'</label>
+						</div>';
+					}
+					
+		            $html_popups = $html_popups . '<a class="close" href="#close"></a>
 				</div>';
 		}
 
@@ -66,8 +76,13 @@ class ArtworkArchiveApiHelper {
 			  <div class="overlay">
 			  	<div class="text">
 			  		<ul>
-			  			<li>'.$json_decoded['public_pieces'][$i]['name'].'</li>
-			  			<li>'.$json_decoded['public_pieces'][$i]['price'].'</li>
+						  <li>'.$json_decoded['public_pieces'][$i]['name'].'</li>';
+						  if(isset($json_decoded['public_pieces'][$i]['price']))
+						  {
+							  $html_for_pieces = $html_for_pieces . '<li>'.$json_decoded['public_pieces'][$i]['price'].'</li>';
+						  }
+
+			$html_for_pieces = $html_for_pieces . '
 			  			<li><a href="#individual-piece-'.$json_decoded['public_pieces'][$i]['slug'].'"> View </a></li>
 			  		</ul>
 			  	</div>
