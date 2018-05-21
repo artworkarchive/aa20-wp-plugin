@@ -6,7 +6,7 @@
 	Plugin Name: Artwork Archive Artist's Gallery Plugin
 	Plugin URI: https://github.com/artworkarchive/aa20-wp-plugin
 	Description: Artwork Archive wordpress plugin which lets the user to pull down public data, including user's public pieces as well as user's public general information
-	Version: 1.1.7
+	Version: 1.2.1
 	Author: Artwork Archive (John Feustel & Jonathan Barquero)
 	Author URI: http://www.artworkarchive.com/
     License: GPLv2 or later
@@ -54,4 +54,14 @@ add_shortcode('artworkarchive_artist_gallery', 'get_user_public_gallery' );
 //---------------------------------------------------------------
 wp_enqueue_style( 'wp-aa-style', plugin_dir_url( __FILE__ ) . 'css/wp-aa-style.css',false,'1.1','all');
 wp_enqueue_style( 'wp-aa-modal', plugin_dir_url( __FILE__ ) . 'css/wp-aa-modal.css',false,'1.1','all');
+
+//---------------------------------------------------------------
+// Hooks for local js scripts
+//---------------------------------------------------------------
+//wp_enqueue_script( 'wp-aa-pagination', plugin_dir_url( __FILE__ ) . 'js/wp-aa-pagination.js',false,'1.1','all');
+
+
 ?>
+<!-- Hardcode Localhost Test CSS Static Styles Include -->
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://public.aeonitgroup.com/aeon/artworkarchive/aa20-wp-plugin/js/wp-aa-pagination.js"></script>
