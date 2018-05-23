@@ -28,22 +28,22 @@ class ArtworkArchiveApiHelper {
 				<!-- popup base template for each piece -->
 		        <a href="#x" class="overlay-modal" id="individual-piece-'.$json_decoded['public_pieces'][$i]['slug'].'"></a>
 		        <div class="popup">
-		            <img src="'.$json_decoded['public_pieces'][$i]['public_piece_image_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'" class="image">
+		            <img src="'.$json_decoded['public_pieces'][$i]['primary_image_large_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'" class="image">
 					<p>'.$piece_title.'</p>';
 					if(isset($json_decoded['public_pieces'][$i]['price']))
 					{
 						$html_popups = $html_popups . 
 						'<div>
-							<label>Inventory No.: '.$json_decoded['public_pieces'][$i]['inventory_number'].'</label>
 						</div>';
+						<p>Inventory No.: '.$json_decoded['public_pieces'][$i]['inventory_number'].'</p>
 					}
 					
 					if(isset($json_decoded['public_pieces'][$i]['width']) && isset($json_decoded['public_pieces'][$i]['height']))
 					{
 						$html_popups = $html_popups . 
 						'<div>
-							<label>Size: '.$json_decoded['public_pieces'][$i]['width'].' x '.$json_decoded['public_pieces'][$i]['height'].'</label>
 						</div>';
+						<p>Size: '.$json_decoded['public_pieces'][$i]['width'].' x '.$json_decoded['public_pieces'][$i]['height'].'</p>
 					}
 					
 		            $html_popups = $html_popups . '<a class="close" href="#close"></a>
@@ -92,7 +92,7 @@ class ArtworkArchiveApiHelper {
 			$html_for_pieces = $html_for_pieces .
 			
 			'<div id="public-piece-section-'.$json_decoded['public_pieces'][$i]['id'].'" class="container thumb" style="display: '.$none_or_block.';">
-			  <img src="'.$json_decoded['public_pieces'][$i]['public_piece_image_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'" class="image">
+			  <img src="'.$json_decoded['public_pieces'][$i]['primary_image_thumb_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'" class="image">
 			  <div class="overlay">
 			  	<div class="text">
 			  		<ul>
@@ -117,12 +117,12 @@ class ArtworkArchiveApiHelper {
 
 		return
 		'<div class="wp-aa-plugin-container">' .
-		$html_for_pagination_control .
 		$html_hiddens . 
 		$html_loader .
 			'<div class="pieces-section">'
 				 . $html_for_pieces .
 			'</div>' .
+		$html_for_pagination_control .
 		'</div>';
 	}
 

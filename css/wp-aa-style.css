@@ -71,16 +71,15 @@
 
 .thumb {
 	float: right;
-  padding: 1em;
-  width: 200px;
-  height: 150px;
+  padding: 0.4em;
+  width: 20%;
+  height: auto;
   overflow: hidden;
 }
 
 .thumb img {
-    min-width: 200px;
-    min-height: 150px;
-    width: 200px;
+    width: 100%;
+    height: auto;
 }
 .container {
   position: relative;
@@ -126,8 +125,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  width: 100%;
 }
-
+.text ul {
+  font-size: 1em;
+  margin: 1em;
+}
 .text ul li {
   list-style-type: none;
 }
@@ -138,12 +141,14 @@
   font-size: 22px;
   color: black;
   */
-  display: block;
+  display: inline-block;
   border-color: #afafaf;
   border: 1px solid #767676;
   color: #767676;
   text-align: center;
   cursor: pointer;
+  padding: 0.25em 1em;
+  margin: 0.8em auto 0 auto;
 }
 
 /**PAGINATION*/
@@ -160,4 +165,10 @@
 
 .wp-aa-plugin-container {
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .thumb {
+    width: 50%;
+  }
 }
