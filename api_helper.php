@@ -111,14 +111,18 @@ class ArtworkArchiveApiHelper {
 		}
 
 		$html_hiddens = "<input id='selected_page' type='hidden' value=1 />";
+		$html_loader = "<div id='main_loader' class='loader' style='display:none;'></div>";
 		$html_hiddens = $html_hiddens . "<input id='public_pieces_ids' type='hidden' value='" . substr($all_public_pieces_ids, 0, -1) . "' />";
 		$html_for_pagination_control = ArtworkArchiveApiHelper::generate_paging_control($user_slug, $total_pages, $page, $page_size);
 
 		return
-		$html_hiddens . 
+		'<div class="wp-aa-plugin-container">' .
 		$html_for_pagination_control .
-		'<div class="pieces-section">'
-			. $html_for_pieces .
+		$html_hiddens . 
+		$html_loader .
+			'<div class="pieces-section">'
+				 . $html_for_pieces .
+			'</div>' .
 		'</div>';
 	}
 
@@ -127,14 +131,23 @@ class ArtworkArchiveApiHelper {
 		//$total_pages = $total_pages + 1;
 		$html_paging_control = 
 		'<div class="pagination">
-			<a href="#" onclick=showPrevPublicPiecesPage("'.$artist_slug.'",'.$total_pages.','.$page_size.')>&laquo;</a>';
+			<a style="color:#333;" href="#" onclick=showPrevPublicPiecesPage("'.$artist_slug.'",'.$total_pages.','.$page_size.')>&laquo;</a>';
 
 		for ($i = 0; $i < $total_pages; $i++) {
-			$html_paging_control = $html_paging_control . '<a href="#" onclick=onPageSelection("'.$artist_slug.'",'.($i+1).','.$page_size.');>'.($i+1).'</a>';
+			if($i==0)
+			{
+				//selected by default : style="color:red;"
+				$html_paging_control = $html_paging_control . '<a style="color:#00c4ff;" id="page-selection-number-'.($i+1).'" href="#" onclick=onPageSelection("'.$artist_slug.'",'.$total_pages.','.($i+1).','.$page_size.');>'.($i+1).'</a>';
+			}
+			else
+			{
+				//no color
+				$html_paging_control = $html_paging_control . '<a style="color:#333;" id="page-selection-number-'.($i+1).'" href="#" onclick=onPageSelection("'.$artist_slug.'",'.$total_pages.','.($i+1).','.$page_size.');>'.($i+1).'</a>';
+			}
 		}
 
 		$html_paging_control = $html_paging_control . '
-			<a href="#" onclick=showNextPublicPiecesPage("'.$artist_slug.'",'.$total_pages.','.$page_size.')>&raquo;</a>
+			<a style="color:#333;" href="#" onclick=showNextPublicPiecesPage("'.$artist_slug.'",'.$total_pages.','.$page_size.')>&raquo;</a>
 		</div>';
 
 		return $html_paging_control;

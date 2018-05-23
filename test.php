@@ -28,3 +28,4 @@ echo ArtworkArchiveApiHelper::get_user_public_pieces_information($my_artist_slug
 
 <link href="http://public.aeonitgroup.com/aeon/artworkarchive/aa20-wp-plugin/css/wp-aa-style.css" rel="stylesheet">
 <link href="http://public.aeonitgroup.com/aeon/artworkarchive/aa20-wp-plugin/css/wp-aa-modal.css" rel="stylesheet">
+<link href="http://public.aeonitgroup.com/aeon/artworkarchive/aa20-wp-plugin/css/wp-aa-loader.css" rel="stylesheet">
