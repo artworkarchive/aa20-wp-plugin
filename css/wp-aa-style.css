@@ -74,6 +74,7 @@
   width: 200px;
   height: auto;
   overflow: hidden;
+  display: inline-block;
 }
 
 .thumb img {
