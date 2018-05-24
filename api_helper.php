@@ -34,16 +34,17 @@ class ArtworkArchiveApiHelper {
 					{
 						$html_popups = $html_popups . 
 						'<div>
+							<p>Inventory No.: '.$json_decoded['public_pieces'][$i]['inventory_number'].'</p>
 						</div>';
-						<p>Inventory No.: '.$json_decoded['public_pieces'][$i]['inventory_number'].'</p>
+						
 					}
 					
 					if(isset($json_decoded['public_pieces'][$i]['width']) && isset($json_decoded['public_pieces'][$i]['height']))
 					{
 						$html_popups = $html_popups . 
 						'<div>
+							<p>Size: '.$json_decoded['public_pieces'][$i]['width'].' x '.$json_decoded['public_pieces'][$i]['height'].'</p>
 						</div>';
-						<p>Size: '.$json_decoded['public_pieces'][$i]['width'].' x '.$json_decoded['public_pieces'][$i]['height'].'</p>
 					}
 					
 		            $html_popups = $html_popups . '<a class="close" href="#close"></a>
