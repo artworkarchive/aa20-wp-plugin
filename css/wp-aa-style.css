@@ -70,9 +70,8 @@
 }
 
 .thumb {
-	float: right;
   padding: 0.4em;
-  width: 20%;
+  width: 200px;
   height: auto;
   overflow: hidden;
 }
@@ -149,6 +148,9 @@
   cursor: pointer;
   padding: 0.25em 1em;
   margin: 0.8em auto 0 auto;
+}
+.text ul li a:hover {
+  border: 1px solid #afafaf;
 }
 
 /**PAGINATION*/

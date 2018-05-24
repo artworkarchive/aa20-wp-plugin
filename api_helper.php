@@ -85,7 +85,7 @@ class ArtworkArchiveApiHelper {
 			}
 			else
 			{
-				$none_or_block = "block";
+				$none_or_block = "inline-block";
 			}
 
 			$all_public_pieces_ids = $all_public_pieces_ids . $json_decoded['public_pieces'][$i]['id'] . ",";
