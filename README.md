@@ -1,16 +1,16 @@
-#Artwork Archive WordPress Plugin
+# Artwork Archive WordPress Plugin
 
 One Paragraph of project description goes here
 
-##Getting Started
+## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-###Prerequisites
+### Prerequisites
 
 Just need to have a WordPress website already running.
 
-###Installing
+### Installing
 
 Just go to your WordPress website Dashboard and add this plugin, then just add the following line to any WordPress page:
 
@@ -20,16 +20,16 @@ Replace `your-artist-name` with your artwork archive artist name
 
 * [Artwork Archive Working API Example](https://staging.artworkarchive.com/api/profile/sophia-rouhana) - Artwork Archive API Sample Call For Artist Called "Sophia Rouhana"
 
-##Authors
+## Authors
 
 * **John Feustel** - *Owner & Initial work* - [John Feustel](https://github.com/artworkarchive)
 * **Jonathan Barquero** - *Initial work* - [Jonathan Barquero](https://github.com/jonbarlo)
 
-##License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-##Built With
+## Built With
 
 * [WP Plugin Guidelines](https://codex.wordpress.org/Writing_a_Plugin) - WordPress Plugin Guidelines
 * [WP Coding Standards for PHP](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/) - Base WP PHP Coding Guidelines
