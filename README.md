@@ -14,7 +14,7 @@ Just need to have a WordPress website already running.
 
 Just go to your WordPress website Dashboard and add this plugin, then just add the following line to any WordPress page:
 
-`[artworkarchive_artist_gallery user_slug="your-artist-name"]`
+`[artworkarchive_portfolio_embed user_slug="your-artist-name"]`
 
 Replace `your-artist-name` with your artwork archive artist name
 

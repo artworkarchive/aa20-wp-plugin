@@ -6,14 +6,14 @@
 //header information
 //---------------------
 /**
-	Plugin Name: Artwork Archive Artist's Gallery Plugin
+	Plugin Name: Artwork Archive Portfolio Embed
 	Plugin URI: https://github.com/artworkarchive/aa20-wp-plugin
 	Description: Artwork Archive wordpress plugin which lets the user to pull down public data, including user's public pieces as well as user's public general information
 	Version: 1.4.8
 	Author: Artwork Archive (John Feustel & Jonathan Barquero)
 	Author URI: http://www.artworkarchive.com/
     License: GPLv2 or later
-	Text Domain: artwork-archive-gallery
+	Text Domain: artwork-archive-profile
 	
 	Copyright 2018  Artwork Archive LLC (email : john@artworkarchive.com)
 	This program is free software; you can redistribute it and/or modify
@@ -50,7 +50,7 @@ function get_user_public_gallery($atts){
 // Hook our plugin functions to WordPress Event
 // Set that function up to execute when the admin_notices action is called
 //---------------------------------------------------------------
-add_shortcode('artworkarchive_artist_gallery', 'get_user_public_gallery' );
+add_shortcode('artworkarchive_portfolio_embed', 'get_user_public_gallery' );
 
 //---------------------------------------------------------------
 // Hooks for local css styles
