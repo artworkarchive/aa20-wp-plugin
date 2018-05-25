@@ -1,4 +1,4 @@
-.popup {
+.aawp-popup {
     font-family: 'Quicksand', sans-serif;
     /*font-family: 'Magra', sans-serif;*/
     /*font-family: 'Varela', sans-serif;*/
@@ -35,7 +35,7 @@
     -o-transition: opacity .5s, top .5s;
     transition: opacity .5s, top .5s;
 }
-.overlay-modal {
+.aawp-overlay-modal {
     background-color: rgba(0, 0, 0, 0.6);
     bottom: 0;
     cursor: default;
@@ -52,16 +52,16 @@
     -o-transition: opacity .5s;
     transition: opacity .5s;
 }
-.overlay-modal:target {
+.aawp-overlay-modal:target {
     visibility: visible;
     opacity: 1;
 }
-.overlay-modal:target+.popup {
+.aawp-overlay-modal:target+.popup {
     top: 50%;
     opacity: 1;
     visibility: visible;
 }
-.close {
+.aawp-close {
     background-color: rgba(0, 0, 0, 0.8);
     height: 30px;
     line-height: 30px;
@@ -77,24 +77,24 @@
     -o-border-radius: 15px;
     border-radius: 15px;
 }
-.close:before {
+.aawp-close:before {
     color: rgba(255, 255, 255, 0.9);
     content: "X";
     font-size: 24px;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
 }
-.close:hover {
+.aawp-close:hover {
     background-color: rgba(64, 128, 128, 0.8);
 }
-.popup p, .popup div {
+.aawp-popup p, .aawp-popup div {
     margin-bottom: 10px;
 }
-.popup label {
+.aawp-popup label {
     display: inline-block;
     text-align: left;
     width: 120px;
 }
-.popup input[type="text"], .popup input[type="password"] {
+.aawp-popup input[type="text"], .aawp-popup input[type="password"] {
     border: 1px solid;
     border-color: #999 #ccc #ccc;
     margin: 0;
@@ -105,6 +105,6 @@
     -o-border-radius: 2px;
     border-radius: 2px;
 }
-.popup input[type="text"]:hover, .popup input[type="password"]:hover {
+.aawp-popup input[type="text"]:hover, .aawp-popup input[type="password"]:hover {
     border-color: #555 #888 #888;
 }

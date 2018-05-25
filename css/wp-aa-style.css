@@ -105,7 +105,7 @@
   transform: translate(-50%, -51%);*/
 }
 
-.aawp-thumb:hover .overlay {
+.aawp-thumb:hover .aawp-overlay {
   bottom: 0;
   height: 100%;
 }
@@ -151,6 +151,7 @@
 /**PAGINATION*/
 .aawp-pagination {
   display: inline-block;
+  margin-top: 1em;
 }
 
 .aawp-pagination a {

@@ -26,8 +26,8 @@ class ArtworkArchiveApiHelper {
 			$piece_title = str_replace("-"," ",$json_decoded['public_pieces'][$i]['slug']);
 			$html_popups = $html_popups . '
 				<!-- popup base template for each piece -->
-		        <a href="#x" class="overlay-modal" id="individual-piece-'.$json_decoded['public_pieces'][$i]['slug'].'"></a>
-		        <div class="popup">
+		        <a href="#x" class="aawp-overlay-modal" id="individual-piece-'.$json_decoded['public_pieces'][$i]['slug'].'"></a>
+		        <div class="aawp-popup">
 		            <img src="'.$json_decoded['public_pieces'][$i]['primary_image_large_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'" class="image">
 					<p>'.$piece_title.'</p>';
 					if(isset($json_decoded['public_pieces'][$i]['price']))
@@ -47,7 +47,7 @@ class ArtworkArchiveApiHelper {
 						</div>';
 					}
 					
-		            $html_popups = $html_popups . '<a class="close" href="#close"></a>
+		            $html_popups = $html_popups . '<a class="aawp-close" href="#close"></a>
 				</div>';
 		}
 
@@ -112,7 +112,7 @@ class ArtworkArchiveApiHelper {
 		}
 
 		$html_hiddens = "<input id='selected_page' type='hidden' value=1 />";
-		$html_loader = "<div id='main_loader' class='loader' style='display:none;'></div>";
+		$html_loader = "<div id='main_loader' class='aawp-loader' style='display:none;'></div>";
 		$html_hiddens = $html_hiddens . "<input id='public_pieces_ids' type='hidden' value='" . substr($all_public_pieces_ids, 0, -1) . "' />";
 		$html_for_pagination_control = ArtworkArchiveApiHelper::generate_paging_control($user_slug, $total_pages, $page, $page_size);
 
