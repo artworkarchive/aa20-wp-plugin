@@ -1,4 +1,4 @@
-.profile-section, .pieces-section{
+.profile-section, .aawp-pieces-section {
   font-family: 'Quicksand', sans-serif;
   /*font-family: 'Magra', sans-serif;*/
   /*font-family: 'Varela', sans-serif;*/
@@ -65,34 +65,28 @@
 }
 
 /**PIECES GALLERY*/
-.pieces-section{
+.aawp-pieces-section {
   padding: 0em 1em;
 }
 
-.thumb {
+.aawp-thumb {
+  position: relative;
   padding: 0.4em;
-  width: 200px;
+  min-width: 200px;
+  max-width: 350px;
+  width: 20%;
   height: auto;
   overflow: hidden;
   display: inline-block;
 }
 
-.thumb img {
-    width: 100%;
-    height: auto;
-}
-.container {
-  position: relative;
-  /*width: 50%;*/
-}
-
-.image {
-  display: block;
+.aawp-thumb img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
-.overlay {
+.aawp-overlay {
   font-size: 0.8em;
   position: absolute;
   bottom: 100%;
@@ -111,12 +105,12 @@
   transform: translate(-50%, -51%);*/
 }
 
-.container:hover .overlay {
+.aawp-thumb:hover .overlay {
   bottom: 0;
   height: 100%;
 }
 
-.text {
+.aawp-overlay-text {
   /*white-space: nowrap;*/
   color: #000;
   position: absolute;
@@ -127,15 +121,15 @@
   -ms-transform: translate(-50%, -50%);
   width: 100%;
 }
-.text ul {
+.aawp-overlay-text ul {
   font-size: 1em;
   margin: 1em;
 }
-.text ul li {
+.aawp-overlay-text ul li {
   list-style-type: none;
 }
 
-.text ul li a {
+.aawp-overlay-text ul li a {
   /*
   text-decoration: none;
   font-size: 22px;
@@ -150,28 +144,28 @@
   padding: 0.25em 1em;
   margin: 0.8em auto 0 auto;
 }
-.text ul li a:hover {
+.aawp-overlay-text ul li a:hover {
   border: 1px solid #afafaf;
 }
 
 /**PAGINATION*/
-.pagination {
+.aawp-pagination {
   display: inline-block;
 }
 
-.pagination a {
+.aawp-pagination a {
   color: black;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
 }
 
-.wp-aa-plugin-container {
+.aawp-plugin-container {
   text-align: center;
 }
 
 @media (max-width: 768px) {
-  .thumb {
+  .aawp-thumb {
     width: 50%;
   }
 }

@@ -92,10 +92,10 @@ class ArtworkArchiveApiHelper {
 
 			$html_for_pieces = $html_for_pieces .
 			
-			'<div id="public-piece-section-'.$json_decoded['public_pieces'][$i]['id'].'" class="container thumb" style="display: '.$none_or_block.';">
-			  <img src="'.$json_decoded['public_pieces'][$i]['primary_image_thumb_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'" class="image">
-			  <div class="overlay">
-			  	<div class="text">
+			'<div id="public-piece-section-'.$json_decoded['public_pieces'][$i]['id'].'" class="aawp-thumb" style="display: '.$none_or_block.';">
+			  <img src="'.$json_decoded['public_pieces'][$i]['primary_image_thumb_url'].'" alt="Public Piece '.$json_decoded['public_pieces'][$i]['name'].'">
+			  <div class="aawp-overlay">
+			  	<div class="aawp-overlay-text">
 			  		<ul>
 						  <li>'.$json_decoded['public_pieces'][$i]['name'].'</li>';
 						  if(isset($json_decoded['public_pieces'][$i]['price']))
@@ -117,10 +117,10 @@ class ArtworkArchiveApiHelper {
 		$html_for_pagination_control = ArtworkArchiveApiHelper::generate_paging_control($user_slug, $total_pages, $page, $page_size);
 
 		return
-		'<div class="wp-aa-plugin-container">' .
+		'<div class="aawp-plugin-container">' .
 		$html_hiddens . 
 		$html_loader .
-			'<div class="pieces-section">'
+			'<div class="aawp-pieces-section">'
 				 . $html_for_pieces .
 			'</div>' .
 		$html_for_pagination_control .
@@ -131,7 +131,7 @@ class ArtworkArchiveApiHelper {
 	{
 		//$total_pages = $total_pages + 1;
 		$html_paging_control = 
-		'<div class="pagination">
+		'<div class="aawp-pagination">
 			<a style="color:#333;" href="#" onclick=showPrevPublicPiecesPage("'.$artist_slug.'",'.$total_pages.','.$page_size.')>&laquo;</a>';
 
 		for ($i = 0; $i < $total_pages; $i++) {
