@@ -56,7 +56,7 @@
     visibility: visible;
     opacity: 1;
 }
-.aawp-overlay-modal:target+.popup {
+.aawp-overlay-modal:target+.aawp-popup {
     top: 50%;
     opacity: 1;
     visibility: visible;
