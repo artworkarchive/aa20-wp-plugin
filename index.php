@@ -9,7 +9,7 @@
 	Plugin Name: Artwork Archive Portfolio Embed
 	Plugin URI: https://github.com/artworkarchive/aa20-wp-plugin
 	Description: Artwork Archive wordpress plugin which lets the user to pull down public data, including user's public pieces as well as user's public general information
-	Version: 1.4.8
+	Version: 1.5.0
 	Author: Artwork Archive (John Feustel & Jonathan Barquero)
 	Author URI: http://www.artworkarchive.com/
     License: GPLv2 or later
