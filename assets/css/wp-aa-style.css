@@ -122,9 +122,16 @@
   width: 100%;
 }
 
-.aawp-li-style-none li {
+p.aawp-popup-piece-name {
+  margin: 0.5em 0 1em 0;
+}
+ul.aawp-li-style-none {
+  margin: 0 0 0.5em 0;
+}
+ul.aawp-li-style-none li {
   list-style-type: none;
 }
+
 
 .aawp-overlay-text ul li a {
   text-decoration: unset;
@@ -156,6 +163,7 @@
 
 .aawp-plugin-container {
   text-align: center;
+  position: relative;
 }
 
 @media (max-width: 768px) {
