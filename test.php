@@ -51,10 +51,11 @@ $my_artist_slug = 'sophia-rouhana';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-<script src="js/wp-aa-page-actions.js"></script>
-<link href="css/wp-aa-style.css" rel="stylesheet">
-<link href="css/wp-aa-modal.css" rel="stylesheet">
-<link href="css/wp-aa-loader.css" rel="stylesheet">
+<script src="assets/js/wp-aa-page-actions.js"></script>
+<link href="assets/css/wp-aa-style.css" rel="stylesheet">
+<link href="assets/css/wp-aa-modal.css" rel="stylesheet">
+<link href="assets/css/wp-aa-loader.css" rel="stylesheet">
+<link href="assets/css/wp-aa-jquery-modal-min.css" rel="stylesheet">
 
 <script type="text/javascript">
 		onPageLoad("<?php echo $my_artist_slug ?>");

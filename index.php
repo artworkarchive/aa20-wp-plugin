@@ -1,9 +1,3 @@
-<!-- jquery include <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<!-- jQuery Modal -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
 <?php
 //---------------------
 //header information
@@ -12,7 +6,7 @@
 	Plugin Name: Artwork Archive Portfolio Embed
 	Plugin URI: https://github.com/artworkarchive/aa20-wp-plugin
 	Description: Artwork Archive wordpress plugin which lets the user to pull down public data, including user's public pieces as well as user's public general information
-	Version: 1.5.5
+	Version: 1.6.0
 	Author: Artwork Archive (John Feustel & Jonathan Barquero)
 	Author URI: http://www.artworkarchive.com/
     License: GPLv2 or later
@@ -33,68 +27,12 @@
 */
 
 //---------------------------------------------------------------
-// Hook our plugin functions to WordPress Event
-// Set that function up to execute when the admin_notices action is called
+//include php core files
 //---------------------------------------------------------------
-add_shortcode('artworkarchive_portfolio_embed', 'get_user_public_gallery' );
-
-//---------------------------------------------------------------
-// Hooks for local css styles
-//---------------------------------------------------------------
-wp_enqueue_style( 'wp-aa-style', plugin_dir_url( __FILE__ ) . 'css/wp-aa-style.css',false,'1.1','all');
-wp_enqueue_style( 'wp-aa-modal', plugin_dir_url( __FILE__ ) . 'css/wp-aa-modal.css',false,'1.1','all');
-wp_enqueue_style( 'wp-aa-loader', plugin_dir_url( __FILE__ ) . 'css/wp-aa-loader.css',false,'1.1','all');
-
-//---------------------------------------------------------------
-// Hooks for local js scripts
-//---------------------------------------------------------------
-//wp_enqueue_script( 'jquery', plugin_dir_url( __FILE__ ) . 'js/jquery-1.9.1.js', false );
-//wp_enqueue_script( 'jquery', plugin_dir_url( __FILE__ ) . 'js/jquery-3.3.1.js', false );
-wp_enqueue_script( 'wp-aa-page-actions', plugin_dir_url( __FILE__ ) . 'js/wp-aa-page-actions.js', false );
-
-//---------------------------------------------------------------
-// Do work (all HTML binding and events for pagination control are handled by javascript code)
-//---------------------------------------------------------------
-//[artworkarchive_public_profile user_slug="sophia-rouhana"]
-function get_user_public_gallery($atts){
-    $a = shortcode_atts( array(
-        'user_slug' => 'artwork-archive-artist-slug-name-here'
-    ), $atts );
-
-    $user_slug = $a['user_slug'];
-
-	$js_script =  
-	'<script type="text/javascript">
-		onPageLoad("'.$user_slug.'");
-	</script>';
-
-	$html = '
-	<!-- Artwork Archive WordPress Plugin Base Layout -->
-
-	<!-- Common Modal Popup -->
-	<div id="pieceViewer" class="modal">
-		<img id="aawp-popup-piece-image" src="" alt="Public Piece Image" class="image">
-		<p id="aawp-popup-piece-name">[binded on runtime]</p>
-		<div id="aawp-popup-piece-details">
-			<p>[binded on runtime]</p>
-		</div>
-	</div>
-	<!-- open the modal thru this button using code on runtime -->
-	<a class="aawp-open-modalpoup-button" href="#pieceViewer" rel="modal:open">[hidden]</a>
-	
-	<!-- Gallery -->
-	<div class="aawp-plugin-container">
-		<input id="selected_page" type="hidden" value="1">
-		<div id="main_loader" class="aawp-loader" style="display: none;"></div>
-		<!-- HTML Created On Runtime -->
-		<div id="aawp-data-section"></div>
-		<div id="aawp-pieces-section" class="aawp-pieces-section"></div>
-		<!-- Pagination control -->
-		<div id="aawp-pagination-section" class="aawp-pagination"></div>
-		<!-- Pagination Helper -->
-		<input id="aawp-user-slug" type="hidden" value=""/>
-	</div>';
-
-	echo $html.$js_script;
-}
-?>
+require_once("assets/add-headers.php");
+//wp-enqueue css styles
+require_once("assets/enqueue-styles-plugin.php");
+//wp-enqueue js scripts
+require_once("assets/enqueue-scripts-plugin.php");
+//include aa-wp-plugin core logic
+require_once("assets/aa-wp-plugin.php");
