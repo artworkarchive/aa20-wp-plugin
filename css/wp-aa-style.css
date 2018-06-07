@@ -126,7 +126,8 @@
   list-style-type: none;
 }
 
-.aawp-overlay-text ul li span {
+.aawp-overlay-text ul li a {
+  text-decoration: unset;
   display: inline-block;
   border-color: #afafaf;
   border: 1px solid #767676;
@@ -136,7 +137,7 @@
   padding: 0.25em 1em;
   margin: 0.8em auto 0 auto;
 }
-.aawp-overlay-text ul li span:hover {
+.aawp-overlay-text ul li a:hover {
   border: 1px solid #afafaf;
 }
 

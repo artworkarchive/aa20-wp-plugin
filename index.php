@@ -1,5 +1,8 @@
-<!-- jquery include -->
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<!-- jquery include <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <?php
 //---------------------
@@ -9,7 +12,7 @@
 	Plugin Name: Artwork Archive Portfolio Embed
 	Plugin URI: https://github.com/artworkarchive/aa20-wp-plugin
 	Description: Artwork Archive wordpress plugin which lets the user to pull down public data, including user's public pieces as well as user's public general information
-	Version: 1.5.4
+	Version: 1.5.5
 	Author: Artwork Archive (John Feustel & Jonathan Barquero)
 	Author URI: http://www.artworkarchive.com/
     License: GPLv2 or later
@@ -47,7 +50,7 @@ wp_enqueue_style( 'wp-aa-loader', plugin_dir_url( __FILE__ ) . 'css/wp-aa-loader
 //---------------------------------------------------------------
 //wp_enqueue_script( 'jquery', plugin_dir_url( __FILE__ ) . 'js/jquery-1.9.1.js', false );
 //wp_enqueue_script( 'jquery', plugin_dir_url( __FILE__ ) . 'js/jquery-3.3.1.js', false );
-wp_enqueue_script( 'wp-aa-pagination', plugin_dir_url( __FILE__ ) . 'js/wp-aa-pagination.js', false );
+wp_enqueue_script( 'wp-aa-page-actions', plugin_dir_url( __FILE__ ) . 'js/wp-aa-page-actions.js', false );
 
 //---------------------------------------------------------------
 // Do work (all HTML binding and events for pagination control are handled by javascript code)
@@ -69,13 +72,15 @@ function get_user_public_gallery($atts){
 	<!-- Artwork Archive WordPress Plugin Base Layout -->
 
 	<!-- Common Modal Popup -->
-	<a href="#x" class="aawp-overlay-modal" id="aa-wp-global-piece-viewer-modal-popup"></a>
-	<div class="aawp-popup">
+	<div id="pieceViewer" class="modal">
 		<img id="aawp-popup-piece-image" src="" alt="Public Piece Image" class="image">
-		<p id="aawp-popup-piece-name"></p>
-		<div id="aawp-popup-piece-details"></div>
-		<a class="aawp-close" href="#close"></a>
+		<p id="aawp-popup-piece-name">[binded on runtime]</p>
+		<div id="aawp-popup-piece-details">
+			<p>[binded on runtime]</p>
+		</div>
 	</div>
+	<!-- open the modal thru this button using code on runtime -->
+	<a class="aawp-open-modalpoup-button" href="#pieceViewer" rel="modal:open">[hidden]</a>
 	
 	<!-- Gallery -->
 	<div class="aawp-plugin-container">
