@@ -1,9 +1,9 @@
-#pieceViewer .modal {
+#pieceViewer.modal {
     padding: 25px;
     overflow: scroll;
 }
 
-#pieceViewer .modal a.close-modal {
+#pieceViewer.modal a.close-modal {
     top: 2px;
     right: 2px;
     width: 22px;
