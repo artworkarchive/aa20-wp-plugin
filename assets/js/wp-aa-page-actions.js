@@ -38,15 +38,12 @@ function generateHTMLForPieces(json_decoded)
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_medium_url + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-id' value='" + json_decoded.public_pieces[i].id + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-name' value='" + json_decoded.public_pieces[i].name + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-description' value='" + json_decoded.public_pieces[i].description + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-slug' value='" + json_decoded.public_pieces[i].slug + "' />";
         html_hiddens += "<input type=hidden id='" + json_decoded.public_pieces[i].slug + "' value='" + json_decoded.public_pieces[i].id + "' />";
         if(json_decoded.public_pieces[i].price != undefined)
         {
             html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-price' value='" + json_decoded.public_pieces[i].price + "' />";
-        }
-        if(json_decoded.public_pieces[i].inventory_number != undefined)
-        {
-            html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-inventory_number' value='" + json_decoded.public_pieces[i].inventory_number + "' />";
         }
         
         html += '<div class="aawp-thumb">' +
@@ -179,6 +176,12 @@ function onIndividualPieceSelection(piece_id){
             var inventory_number = $("#public-piece-" + piece_id + "-hidden-for-inventory_number").val();
             html_ul_details += "<li>Inventory Number: " + inventory_number + "</li>";
             console.log("######"+inventory_number);
+        }
+        if($("#public-piece-" + piece_id + "-hidden-for-description").val() !== undefined && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "undefined" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== null && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "null")
+        {
+            var description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
+            html_ul_details += "<li>Description: " + description + "</li>";
+            console.log( "description: " + description);
         }
         html_ul_details += "</ul>";
         console.log("piece_id: "+piece_id);
