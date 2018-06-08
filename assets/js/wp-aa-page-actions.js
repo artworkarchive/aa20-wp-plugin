@@ -60,7 +60,7 @@ function generateHTMLForPieces(json_decoded)
                         html +='<li>' + json_decoded.public_pieces[i].price + '</li>';
                     }
                     //html +='<li><span onclick="onIndividualPieceSelection(' + json_decoded.public_pieces[i].id + ')"> View </span></li>' +
-                    html +='<li><a href="?show=1&slug=' + json_decoded.public_pieces[i].slug + '"> View </a></li>' +
+                    html +='<li><a href="?piece=' + json_decoded.public_pieces[i].slug + '"> View </a></li>' +
                 '</ul>' +
             '</div>' +
         '</div>' +
@@ -287,23 +287,14 @@ function onPageLoad(artist_slug)
             generateHTMLForPagination(json_decoded);
             
             //read page parameters
-            var show = getUrlVars()["show"];
-            //console.log("url paramters (show): " + show);
-            var piece_slug = getUrlVars()["slug"];
+            var piece_slug = getUrlVars()["piece"];
             //console.log("url paramters (slug): " + slug);
 
-            if(show != undefined)
+            if(piece_slug != undefined)
             {
                 console.log("View A Single Piece....");
-                if(piece_slug != undefined)
-                {
-                    var pieceInfo = getIndividualPieceInfo(artist_slug, piece_slug);
-                    console.log("pieceInfo: "+ pieceInfo);
-                }
-                else
-                {
-                    console.log("Invalid request: Param missing (slug)")
-                }
+                var pieceInfo = getIndividualPieceInfo(artist_slug, piece_slug);
+                console.log("pieceInfo: "+ pieceInfo);
             }
             else
             {

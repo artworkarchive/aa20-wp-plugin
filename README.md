@@ -28,8 +28,10 @@ Just need to have a WordPress website already running.
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Built With
-
 * [WP Plugin Guidelines](https://codex.wordpress.org/Writing_a_Plugin) - WordPress Plugin Guidelines
+* [WP Plugin Guidelines](https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/) - WordPress Plugin Guidelines
+* [WP Plugin README](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/) - WordPress Plugin README
+* [WP Plugin Submission Process Details](https://wordpress.org/plugins/developers/) - WordPress Plugin Submission Process Details
 * [WP Coding Standards for PHP](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/) - Base WP PHP Coding Guidelines
 * [WP Documentation Standards for PHP](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php/) - More PHP Base Guidelines
 * [WP Shortcode API](https://codex.wordpress.org/Shortcode_API) - WordPress Plugin Shortcode API Explained
