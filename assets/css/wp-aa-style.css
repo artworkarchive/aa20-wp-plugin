@@ -80,18 +80,18 @@
 
 @media screen and (max-width: 480px){
 	#aawp-pieces-section[data-columns]::before {
-		content: '1 .column.size-1of1';
+		content: '1 .wall-column.size-1of1';
 	}
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
 	#aawp-pieces-section[data-columns]::before {
-		content: '2 .column.size-1of2';
+		content: '2 .wall-column.size-1of2';
 	}
 }
 @media screen and (min-width: 769px) {
 	#aawp-pieces-section[data-columns]::before {
-		content: '3 .column.size-1of3';
+		content: '3 .wall-column.size-1of3';
 	}
 }
 
