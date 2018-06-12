@@ -4,7 +4,7 @@
 var api_url =  "https://staging.artworkarchive.com/api/profile/";
 
 var page = 1;
-var page_size = 5;
+var page_size = 20;
 
 function generateHTMLHiddensForIndividualPiece(json_decoded)
 {
@@ -35,7 +35,7 @@ function generateHTMLForPieces(json_decoded)
         //show only selected page pieces
         //$('#public-piece-section-'+jsonobj.public_pieces[i].id).show();
         //console.log(json_decoded.public_pieces[i].id);
-        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_medium_url + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_large_url + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-id' value='" + json_decoded.public_pieces[i].id + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-name' value='" + json_decoded.public_pieces[i].name + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-description' value='" + json_decoded.public_pieces[i].description + "' />";
@@ -47,25 +47,25 @@ function generateHTMLForPieces(json_decoded)
         }
         
         html += '<div class="aawp-thumb">' +
-        '<img src="' + json_decoded.public_pieces[i].primary_image_thumb_url + '" alt="Public Piece ' + json_decoded.public_pieces[i].name + '">' +
+        '<a href="?piece=' + json_decoded.public_pieces[i].slug + '">' +
+        '<img src="' + json_decoded.public_pieces[i].primary_image_medium_url + '" alt="Public Piece ' + json_decoded.public_pieces[i].name + '"/>' +
         '<div class="aawp-overlay">' +
             '<div class="aawp-overlay-text">' +
-                '<ul>' +
+                '<ul class="aawp-li-style-none no-pad-bottom">' +
                     '<li>' + json_decoded.public_pieces[i].name + '</li>';
                     if(json_decoded.public_pieces[i].price != undefined)
                     {
                         html +='<li>' + json_decoded.public_pieces[i].price + '</li>';
                     }
-                    //html +='<li><span onclick="onIndividualPieceSelection(' + json_decoded.public_pieces[i].id + ')"> View </span></li>' +
-                    html +='<li><a href="?piece=' + json_decoded.public_pieces[i].slug + '"> View </a></li>' +
-                '</ul>' +
+        html += '</ul>' +
             '</div>' +
         '</div>' +
+        '</a>' +
       '</div>';
-      //console.log(html);
     }
     $('#aawp-data-section').html(html_hiddens);
     $('#aawp-pieces-section').html(html);
+    salvattore.registerGrid(document.querySelector('#aawp-pieces-section'));
 }
 
 function generateHTMLForPagination(json_decoded)

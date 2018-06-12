@@ -1,6 +1,8 @@
 #pieceViewer.modal {
     padding: 25px;
     overflow: scroll;
+    max-width: 900px;
+    margin: 4em 0;
 }
 
 #pieceViewer.modal a.close-modal {
@@ -17,5 +19,4 @@
 
 #aawp-popup-piece-image
 {
-    width: 100%;
 }
