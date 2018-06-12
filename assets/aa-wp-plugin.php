@@ -41,7 +41,7 @@ function get_user_public_gallery($atts){
 		<div id="main_loader" class="aawp-loader" style="display: none;"></div>
 		<!-- HTML Created On Runtime -->
 		<div id="aawp-data-section"></div>
-		<div id="aawp-pieces-section" class="aawp-pieces-section" data-columns></div>
+		<div id="aawp-pieces-section" class="aawp-pieces-section aawp-clearfix" data-columns></div>
 		<!-- Pagination control -->
 		<div id="aawp-pagination-section" class="aawp-pagination"></div>
 		<!-- Pagination Helper -->

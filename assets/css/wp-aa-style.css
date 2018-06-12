@@ -1,3 +1,12 @@
+/* Helpers */
+.aawp-clearfix::before, .aawp-clearfix::after {
+  content: ' ';
+  display: table;
+}
+.aawp-clearfix::after {
+  clear: both;
+}
+
 .profile-section, .aawp-pieces-section {
   font-family: 'Quicksand', sans-serif;
   /*font-family: 'Magra', sans-serif;*/
@@ -152,9 +161,9 @@ ul.aawp-li-style-none li {
   padding: 0.25em 1em;
   margin: 0.8em auto 0 auto;
 }
-.aawp-overlay-text ul li a:hover {
+/* .aawp-overlay-text ul li a:hover {
   border: 1px solid #afafaf;
-}
+} */
 
 /**PAGINATION*/
 .aawp-pagination {

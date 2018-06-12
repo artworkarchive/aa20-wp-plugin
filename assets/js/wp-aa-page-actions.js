@@ -57,7 +57,6 @@ function generateHTMLForPieces(json_decoded)
                     {
                         html +='<li>' + json_decoded.public_pieces[i].price + '</li>';
                     }
-                    //html +='<li><span onclick="onIndividualPieceSelection(' + json_decoded.public_pieces[i].id + ')"> View </span></li>' +
                 '</ul>' +
             '</div>' +
         '</div>' +
@@ -67,7 +66,7 @@ function generateHTMLForPieces(json_decoded)
     }
     $('#aawp-data-section').html(html_hiddens);
     $('#aawp-pieces-section').html(html);
-    salvattore.registerGrid(document.querySelector('#aawp-pieces-section'));
+    // salvattore.registerGrid(document.querySelector('#aawp-pieces-section'));
 }
 
 function generateHTMLForPagination(json_decoded)
