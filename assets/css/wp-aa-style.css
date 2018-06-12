@@ -82,7 +82,8 @@
   max-width: 350px;
   width: 20%;
   height: auto; */
-  overflow: hidden;
+  /* overflow: hidden; */
+  padding: 0.5em;
   /* display: inline-block; */
 }
 
@@ -94,13 +95,13 @@
 
 .aawp-overlay {
   font-size: 0.8em;
-  position: absolute;
+  /* position: absolute;
   bottom: 100%;
   right: 0%;
   overflow: hidden;
   width: 100%;
   height:0;
-  transition: .5s ease;
+  transition: .5s ease; */
 
   background-color: rgba(255, 255, 255, 0.9);
   /*width: 101%;
@@ -111,21 +112,22 @@
   transform: translate(-50%, -51%);*/
 }
 
-.aawp-thumb:hover .aawp-overlay {
+/* .aawp-thumb:hover .aawp-overlay {
   bottom: 0;
   height: 100%;
-}
+} */
 
 .aawp-overlay-text {
   /*white-space: nowrap;*/
-  color: #000;
-  position: absolute;
+  color: #767676;
+  margin-top: 0.5em;
+  /* position: absolute;
   overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  width: 100%;
+  width: 100%; */
 }
 
 p#aawp-popup-piece-name {

@@ -47,6 +47,7 @@ function generateHTMLForPieces(json_decoded)
         }
         
         html += '<div class="aawp-thumb">' +
+        '<a href="?piece=' + json_decoded.public_pieces[i].slug + '">' +
         '<img src="' + json_decoded.public_pieces[i].primary_image_medium_url + '" alt="Public Piece ' + json_decoded.public_pieces[i].name + '">' +
         '<div class="aawp-overlay">' +
             '<div class="aawp-overlay-text">' +
@@ -57,15 +58,16 @@ function generateHTMLForPieces(json_decoded)
                         html +='<li>' + json_decoded.public_pieces[i].price + '</li>';
                     }
                     //html +='<li><span onclick="onIndividualPieceSelection(' + json_decoded.public_pieces[i].id + ')"> View </span></li>' +
-                    html +='<li><a href="?piece=' + json_decoded.public_pieces[i].slug + '"> View </a></li>' +
                 '</ul>' +
             '</div>' +
         '</div>' +
+        '</a>' +
       '</div>';
       //console.log(html);
     }
     $('#aawp-data-section').html(html_hiddens);
     $('#aawp-pieces-section').html(html);
+    salvattore.registerGrid(document.querySelector('#aawp-pieces-section'));
 }
 
 function generateHTMLForPagination(json_decoded)
