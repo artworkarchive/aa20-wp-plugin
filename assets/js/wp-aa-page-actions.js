@@ -4,7 +4,7 @@
 var api_url =  "https://staging.artworkarchive.com/api/profile/";
 
 var page = 1;
-var page_size = 5;
+var page_size = 20;
 
 function generateHTMLHiddensForIndividualPiece(json_decoded)
 {
@@ -51,7 +51,7 @@ function generateHTMLForPieces(json_decoded)
         '<img src="' + json_decoded.public_pieces[i].primary_image_medium_url + '" alt="Public Piece ' + json_decoded.public_pieces[i].name + '"/>' +
         '<div class="aawp-overlay">' +
             '<div class="aawp-overlay-text">' +
-                '<ul>' +
+                '<ul class="aawp-li-style-none no-pad-bottom">' +
                     '<li>' + json_decoded.public_pieces[i].name + '</li>';
                     if(json_decoded.public_pieces[i].price != undefined)
                     {

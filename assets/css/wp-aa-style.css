@@ -80,20 +80,18 @@
 #aawp-pieces-section[data-columns]::before {
   content: '3 .wall-column.size-1of3';
 }
+@media (max-width: 768px) {
+  #aawp-pieces-section[data-columns]::before {
+    content: '2 .wall-column.size-1of2';
+  }
+}
 /* These are the classes that are going to be applied: */
 .wall-column { float: left; }
 .size-1of3 { width: 33.333%; }
+.size-1of2 { width: 50%; }
 
 .aawp-thumb {
-  /* position: relative;
-  padding: 0.4em;
-  min-width: 200px;
-  max-width: 350px;
-  width: 20%;
-  height: auto; */
-  /* overflow: hidden; */
   padding: 0.5em;
-  /* display: inline-block; */
 }
 
 .aawp-thumb img {
@@ -102,41 +100,19 @@
   display: block;
 }
 
-.aawp-overlay {
-  font-size: 0.8em;
-  /* position: absolute;
-  bottom: 100%;
-  right: 0%;
-  overflow: hidden;
-  width: 100%;
-  height:0;
-  transition: .5s ease; */
-
-  background-color: rgba(255, 255, 255, 0.9);
-  /*width: 101%;
-  margin: 0;
-  padding: 1em;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -51%);*/
+.aawp-thumb:hover img {
+  box-shadow: 0 0 10px #333;
 }
 
-/* .aawp-thumb:hover .aawp-overlay {
-  bottom: 0;
-  height: 100%;
-} */
+.aawp-overlay {
+  font-size: 0.8em;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
 
 .aawp-overlay-text {
-  /*white-space: nowrap;*/
   color: #767676;
   margin-top: 0.5em;
-  /* position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  width: 100%; */
 }
 
 p#aawp-popup-piece-name {
@@ -148,9 +124,12 @@ ul.aawp-li-style-none {
 ul.aawp-li-style-none li {
   list-style-type: none;
 }
+ul.no-pad-bottom {
+  margin-bottom: 0;
+}
 
 
-.aawp-overlay-text ul li a {
+/* .aawp-overlay-text ul li a {
   text-decoration: unset;
   display: inline-block;
   border-color: #afafaf;
@@ -160,9 +139,6 @@ ul.aawp-li-style-none li {
   cursor: pointer;
   padding: 0.25em 1em;
   margin: 0.8em auto 0 auto;
-}
-/* .aawp-overlay-text ul li a:hover {
-  border: 1px solid #afafaf;
 } */
 
 /**PAGINATION*/
@@ -185,8 +161,8 @@ ul.aawp-li-style-none li {
   position: relative;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .aawp-thumb {
     width: 50%;
   }
-}
+} */
