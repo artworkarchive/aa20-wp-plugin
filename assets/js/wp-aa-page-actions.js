@@ -47,7 +47,7 @@ function generateHTMLForPieces(json_decoded)
         }
         
         html += '<div class="aawp-thumb">' +
-        '<img src="' + json_decoded.public_pieces[i].primary_image_thumb_url + '" alt="Public Piece ' + json_decoded.public_pieces[i].name + '">' +
+        '<img src="' + json_decoded.public_pieces[i].primary_image_medium_url + '" alt="Public Piece ' + json_decoded.public_pieces[i].name + '">' +
         '<div class="aawp-overlay">' +
             '<div class="aawp-overlay-text">' +
                 '<ul>' +
