@@ -35,7 +35,7 @@ function generateHTMLForPieces(json_decoded)
         //show only selected page pieces
         //$('#public-piece-section-'+jsonobj.public_pieces[i].id).show();
         //console.log(json_decoded.public_pieces[i].id);
-        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_medium_url + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_large_url + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-id' value='" + json_decoded.public_pieces[i].id + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-name' value='" + json_decoded.public_pieces[i].name + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-description' value='" + json_decoded.public_pieces[i].description + "' />";
@@ -62,7 +62,6 @@ function generateHTMLForPieces(json_decoded)
         '</div>' +
         '</a>' +
       '</div>';
-      //console.log(html);
     }
     $('#aawp-data-section').html(html_hiddens);
     $('#aawp-pieces-section').html(html);
