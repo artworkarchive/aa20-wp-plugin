@@ -158,8 +158,8 @@ ul.aawp-li-style-none li {
   color: black;
   float: left;
   padding: 8px 16px;
-  text-decoration: none;
-  border: none;
+  text-decoration: none !important;
+  border: none !important;
   box-shadow: none !important;
 }
 
