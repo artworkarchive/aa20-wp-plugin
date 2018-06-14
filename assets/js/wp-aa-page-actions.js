@@ -205,32 +205,33 @@ function onIndividualPieceSelection(piece_id){
         var piece_price_sale = $("#public-piece-" + piece_id + "-hidden-for-price_sale").val();
         
         var html_ul_details = "<ul class='aawp-li-style-none'>";
-        if($("#public-piece-" + piece_id + "-hidden-for-price").val() !== undefined)
-        {
-            var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
-            html_ul_details += "<li>Price: " + piece_price + "</li>";
-        }
-        if($("#public-piece-" + piece_id + "-hidden-for-inventory_number").val() !== undefined)
-        {
-            var inventory_number = $("#public-piece-" + piece_id + "-hidden-for-inventory_number").val();
-            html_ul_details += "<li>Inventory Number: " + inventory_number + "</li>";
-        }
-        if($("#public-piece-" + piece_id + "-hidden-for-description").val() !== undefined && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "undefined" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== null && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "null")
-        {
-            var description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
-            html_ul_details += "<li>Description: " + description + "</li>";
-        }
         if(piece_medium !== undefined && piece_medium !== "undefined")
         {
-            html_ul_details += "<li>Medium: " + piece_medium + "</li>";
+            html_ul_details += "<li>" + piece_medium + "</li>";
         }
         if(piece_height !== undefined && piece_width !== undefined)
         {
-            html_ul_details += "<li>Size: " + piece_height + " x " + piece_width + "</li>";
+            html_ul_details += "<li>" + piece_height + " x " + piece_width + "</li>";
         }
         if(piece_price_sale !== undefined && piece_price_sale !== "undefined")
         {
             html_ul_details += "<li>" + piece_price_sale + "</li>";
+        }
+
+        if($("#public-piece-" + piece_id + "-hidden-for-price").val() !== undefined)
+        {
+            var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
+            html_ul_details += "<li>" + piece_price + "</li>";
+        }
+        // if($("#public-piece-" + piece_id + "-hidden-for-inventory_number").val() !== undefined)
+        // {
+        //     var inventory_number = $("#public-piece-" + piece_id + "-hidden-for-inventory_number").val();
+        //     html_ul_details += "<li style='margin-top:1em'>Inventory Number: " + inventory_number + "</li>";
+        // }
+        if($("#public-piece-" + piece_id + "-hidden-for-description").val() !== undefined && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "undefined" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== null && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "null")
+        {
+            var description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
+            html_ul_details += "<li style='margin-top:2em;>" + description + "</li>";
         }
         html_ul_details += "</ul>";
 

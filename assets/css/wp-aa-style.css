@@ -171,6 +171,7 @@ ul.no-pad-bottom {
 .aawp-plugin-container {
   text-align: center;
   position: relative;
+  min-height: 400px;
 }
 
 .aawp-plugin-footer
