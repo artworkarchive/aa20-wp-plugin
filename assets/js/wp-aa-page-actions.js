@@ -6,15 +6,6 @@ var api_url =  "https://staging.artworkarchive.com/api/profile/";
 var page = 1;
 var page_size = 20;
 
-/*$(document).on($.modal.AFTER_CLOSE, function(event, modal) {
-    // clear piece query param
-    var url = document.location.href;
-    var base = url.split('?')[0];
-    console.log("url - "+url);
-    console.log("base - "+base);
-    document.location.href=base;
-});*/
-
 /*$('#customCloseButton').bind('click',function(e){
     //e.preventDefault();
     //window.history.pushState({}, document.title, "/");
@@ -26,13 +17,29 @@ var page_size = 20;
     //$('#pieceViewer').hide('500');
 });*/
 
+function removePieceQueryParam() {
+    if (history.pushState) {
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        window.history.pushState({ path: newurl }, '', newurl);
+    }
+}
+
+jQuery(document).ready(function(){
+    jQuery(document).on($.modal.AFTER_CLOSE, function (event, modal) {
+        console.log("Closing Modal!");
+        // clear piece query param
+        removePieceQueryParam();
+    });
+});
+
 function onCloseButtonClick()
 {
     var url = document.location.href;
     var base = url.split('?')[0];
     console.log("url - "+url);
     console.log("base - "+base);
-    document.location.href=base;
+    // document.location.href=base;
+    $.modal.close();
 }
 
 function generateHTMLHiddensForIndividualPiece(json_decoded)
