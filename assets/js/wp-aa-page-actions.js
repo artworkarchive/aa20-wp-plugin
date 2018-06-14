@@ -24,14 +24,6 @@ function removePieceQueryParam() {
     }
 }
 
-jQuery(document).ready(function(){
-    jQuery(document).on($.modal.AFTER_CLOSE, function (event, modal) {
-        console.log("Closing Modal!");
-        // clear piece query param
-        removePieceQueryParam();
-    });
-});
-
 function onCloseButtonClick()
 {
     var url = document.location.href;
@@ -107,6 +99,13 @@ function generateHTMLForPieces(json_decoded)
     $('#aawp-data-section').html(html_hiddens);
     $('#aawp-pieces-section').html(html);
     salvattore.registerGrid(document.querySelector('#aawp-pieces-section'));
+
+    // Handle modal closing url updates.
+    $(document).on($.modal.AFTER_CLOSE, function (event, modal) {
+        console.log("Closing Modal!");
+        // clear piece query param
+        removePieceQueryParam();
+    });
 }
 
 function generateHTMLForPagination(json_decoded)
