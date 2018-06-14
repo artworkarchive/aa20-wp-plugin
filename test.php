@@ -20,6 +20,8 @@ $my_artist_slug = 'sophia-rouhana';
     <div id="aawp-popup-piece-details">
         <p>[binded on runtime]</p>
     </div>
+    <!--<a id="customCloseButton" href="javascript:">Close</a>-->
+    <a class="aawp-close-modal-button" onclick="onCloseButtonClick()" href="javascript:">Close</a>
 </div>
 
 <!-- open the modal thru this button using code on runtime -->
@@ -41,12 +43,17 @@ $my_artist_slug = 'sophia-rouhana';
     <div id="aawp-pagination-section" class="aawp-pagination">
         [dynamic html]
     </div>
+
+	<div class="aawp-plugin-footer">
+		Powered by <a href="https://www.artworkarchive.com/" target="blank">Artwork Archive</a>
+	</div>
 </div>
 
 <input id="aawp-user-slug" type="hidden" value=""/>
 
 <!-- Hardcode Localhost Test CSS Static Styles Include <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/salvattore/1.0.9/salvattore.min.js"></script>
 <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />

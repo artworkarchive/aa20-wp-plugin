@@ -6,6 +6,35 @@ var api_url =  "https://staging.artworkarchive.com/api/profile/";
 var page = 1;
 var page_size = 20;
 
+/*$(document).on($.modal.AFTER_CLOSE, function(event, modal) {
+    // clear piece query param
+    var url = document.location.href;
+    var base = url.split('?')[0];
+    console.log("url - "+url);
+    console.log("base - "+base);
+    document.location.href=base;
+});*/
+
+/*$('#customCloseButton').bind('click',function(e){
+    //e.preventDefault();
+    //window.history.pushState({}, document.title, "/");
+    var url = document.location.href;
+    var base = url.split('?')[0];
+    console.log("url - "+url);
+    console.log("base - "+base);
+    document.location.href=base;
+    //$('#pieceViewer').hide('500');
+});*/
+
+function onCloseButtonClick()
+{
+    var url = document.location.href;
+    var base = url.split('?')[0];
+    console.log("url - "+url);
+    console.log("base - "+base);
+    document.location.href=base;
+}
+
 function generateHTMLHiddensForIndividualPiece(json_decoded)
 {
     var html_hiddens = "";
@@ -40,6 +69,11 @@ function generateHTMLForPieces(json_decoded)
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-name' value='" + json_decoded.public_pieces[i].name + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-description' value='" + json_decoded.public_pieces[i].description + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-slug' value='" + json_decoded.public_pieces[i].slug + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-medium' value='" + json_decoded.public_pieces[i].medium + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-height' value='" + json_decoded.public_pieces[i].height + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-width' value='" + json_decoded.public_pieces[i].width + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-price_sale' value='" + json_decoded.public_pieces[i].price_sale + "' />";
+        
         html_hiddens += "<input type=hidden id='" + json_decoded.public_pieces[i].slug + "' value='" + json_decoded.public_pieces[i].id + "' />";
         if(json_decoded.public_pieces[i].price != undefined)
         {
@@ -164,39 +198,48 @@ function onIndividualPieceSelection(piece_id){
         var piece_name = $("#public-piece-" + piece_id + "-hidden-for-name").val();
         var piece_image = $("#public-piece-" + piece_id + "-hidden-for-img").val();
         var piece_slug = $("#public-piece-" + piece_id + "-hidden-for-slug").val();
+
+        var piece_medium = $("#public-piece-" + piece_id + "-hidden-for-medium").val();
+        var piece_height = $("#public-piece-" + piece_id + "-hidden-for-height").val();
+        var piece_width = $("#public-piece-" + piece_id + "-hidden-for-width").val();
+        var piece_price_sale = $("#public-piece-" + piece_id + "-hidden-for-price_sale").val();
+        
         var html_ul_details = "<ul class='aawp-li-style-none'>";
         if($("#public-piece-" + piece_id + "-hidden-for-price").val() !== undefined)
         {
             var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
             html_ul_details += "<li>Price: " + piece_price + "</li>";
-            console.log("$$$$$$"+piece_price);
         }
         if($("#public-piece-" + piece_id + "-hidden-for-inventory_number").val() !== undefined)
         {
             var inventory_number = $("#public-piece-" + piece_id + "-hidden-for-inventory_number").val();
             html_ul_details += "<li>Inventory Number: " + inventory_number + "</li>";
-            console.log("######"+inventory_number);
         }
         if($("#public-piece-" + piece_id + "-hidden-for-description").val() !== undefined && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "undefined" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== null && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "null")
         {
             var description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
             html_ul_details += "<li>Description: " + description + "</li>";
-            console.log( "description: " + description);
+        }
+        if(piece_medium !== undefined && piece_medium !== "undefined")
+        {
+            html_ul_details += "<li>Medium: " + piece_medium + "</li>";
+        }
+        if(piece_height !== undefined && piece_width !== undefined)
+        {
+            html_ul_details += "<li>Size: " + piece_height + " x " + piece_width + "</li>";
+        }
+        if(piece_price_sale !== undefined && piece_price_sale !== "undefined")
+        {
+            html_ul_details += "<li>" + piece_price_sale + "</li>";
         }
         html_ul_details += "</ul>";
-        console.log("piece_id: "+piece_id);
-        console.log("piece_name: "+piece_name);
-        console.log("piece_image: "+piece_image);
-        console.log("piece_slug: "+piece_slug);
+
         $("#aawp-popup-piece-image").attr("src",piece_image);
         $("#aawp-popup-piece-name").text(piece_name);
         $("#aawp-popup-piece-details").html(html_ul_details);
     
         //show modal
         $('a.aawp-open-modalpoup-button')[0].click();
-        console.log("modal opened!");
-        //window.location.href = '?slug='+piece_slug+'"#aa-wp-global-piece-viewer-modal-popup';
-        //window.location.href = '?show=1&slug='+piece_slug;
     }
 }
 
@@ -248,7 +291,7 @@ function getIndividualPieceInfo(artist_slug, piece_slug)
             complete: function (response) {
                 //if response success parse json response to HTML
                 var json_decoded = JSON.parse(response.responseText);
-                console.log(json_decoded);
+                //console.log(json_decoded);
                 generateHTMLHiddensForIndividualPiece(json_decoded);
                 onIndividualPieceSelection(json_decoded.id);
                 $('#main_loader').hide();
@@ -263,11 +306,6 @@ function getIndividualPieceInfo(artist_slug, piece_slug)
 
 function onPageLoad(artist_slug)
 {
-    //var url_string = "http://www.example.com/t.html?a=1&b=3&c=m2-m3-m4-m5"; //window.location.href
-    /*var url_string = window.location.href;
-    var url = new URL(url_string);
-    var c = url.searchParams.get("c");
-    */
 
     //show loader
     $('#main_loader').show();

@@ -31,6 +31,8 @@ function get_user_public_gallery($atts){
 		<div id="aawp-popup-piece-details">
 			<p>[binded on runtime]</p>
 		</div>
+		<!-- <a id="customCloseButton" href="javascript:">Close</a> -->
+		<a class="aawp-close-modal-button" onclick="onCloseButtonClick()" href="javascript:">Close</a>
 	</div>
 	<!-- open the modal thru this button using code on runtime -->
 	<a class="aawp-open-modalpoup-button" href="#pieceViewer" rel="modal:open">[hidden]</a>
@@ -46,6 +48,10 @@ function get_user_public_gallery($atts){
 		<div id="aawp-pagination-section" class="aawp-pagination"></div>
 		<!-- Pagination Helper -->
 		<input id="aawp-user-slug" type="hidden" value=""/>
+	</div>
+
+	<div class="aawp-plugin-footer">
+		Powered by <a href="https://www.artworkarchive.com/" target="blank">Artwork Archive</a>
 	</div>';
 
 	echo $html.$js_script;
