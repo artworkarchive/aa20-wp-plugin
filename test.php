@@ -20,8 +20,6 @@ $my_artist_slug = 'sophia-rouhana';
     <div id="aawp-popup-piece-details">
         <p>[binded on runtime]</p>
     </div>
-    <!--<a id="customCloseButton" href="javascript:">Close</a>-->
-    <a class="aawp-close-modal-button" onclick="onCloseButtonClick()" href="javascript:">Close</a>
 </div>
 
 <!-- open the modal thru this button using code on runtime -->

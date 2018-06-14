@@ -6,32 +6,11 @@ var api_url =  "https://staging.artworkarchive.com/api/profile/";
 var page = 1;
 var page_size = 20;
 
-/*$('#customCloseButton').bind('click',function(e){
-    //e.preventDefault();
-    //window.history.pushState({}, document.title, "/");
-    var url = document.location.href;
-    var base = url.split('?')[0];
-    console.log("url - "+url);
-    console.log("base - "+base);
-    document.location.href=base;
-    //$('#pieceViewer').hide('500');
-});*/
-
 function removePieceQueryParam() {
     if (history.pushState) {
         var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
         window.history.pushState({ path: newurl }, '', newurl);
     }
-}
-
-function onCloseButtonClick()
-{
-    var url = document.location.href;
-    var base = url.split('?')[0];
-    console.log("url - "+url);
-    console.log("base - "+base);
-    // document.location.href=base;
-    $.modal.close();
 }
 
 function generateHTMLHiddensForIndividualPiece(json_decoded)
@@ -60,9 +39,6 @@ function generateHTMLForPieces(json_decoded)
     $('#aawp-pieces-section').html("");
     $('#aawp-data-section').html("");
     for (var i = 0; i < json_decoded.public_pieces.length; i++) {
-        //show only selected page pieces
-        //$('#public-piece-section-'+jsonobj.public_pieces[i].id).show();
-        //console.log(json_decoded.public_pieces[i].id);
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_large_url + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-id' value='" + json_decoded.public_pieces[i].id + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-name' value='" + json_decoded.public_pieces[i].name + "' />";
@@ -102,7 +78,6 @@ function generateHTMLForPieces(json_decoded)
 
     // Handle modal closing url updates.
     $(document).on($.modal.AFTER_CLOSE, function (event, modal) {
-        console.log("Closing Modal!");
         // clear piece query param
         removePieceQueryParam();
     });
@@ -110,10 +85,7 @@ function generateHTMLForPieces(json_decoded)
 
 function generateHTMLForPagination(json_decoded)
 {
-    console.log("generateHTMLForPagination");
-
     var user_slug = $('#aawp-user-slug').val();
-    console.log("user_slug: "+user_slug);
 
     $('#aawp-pagination-section').html("");
     var html_pagination_control = "";
@@ -178,7 +150,6 @@ function onPageSelection(artist_slug, total_pages, page, page_size)
             $('#main_loader').hide();
         },
         error: function () {
-            console.log('TODO: there was an error!');
             $('#main_loader').hide();
         },
     });
@@ -186,8 +157,6 @@ function onPageSelection(artist_slug, total_pages, page, page_size)
 }
 
 function onIndividualPieceSelection(piece_id){
-    console.log("onIndividualPieceSelection");
-    console.log(piece_id);
     
     //if selected piece is present on actual page
     if($("#public-piece-" + piece_id + "-hidden-for-id").val() != undefined && $("#public-piece-" + piece_id + "-hidden-for-id").val() != '')
@@ -195,13 +164,11 @@ function onIndividualPieceSelection(piece_id){
         $("#aawp-popup-piece-image").attr("src","");
         $("#aawp-popup-piece-name").text("");
         $("#aawp-popup-piece-details").html("");
-        //#aa-wp-global-piece-viewer-modal-popup
-        //awp-popup-piece-image
-        //aawp-popup-piece-name
-        //aawp-popup-piece-details
-        console.log("....");
+
         var piece_id = $("#public-piece-" + piece_id + "-hidden-for-id").val();
         var piece_name = $("#public-piece-" + piece_id + "-hidden-for-name").val();
+        var piece_description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
+        var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
         var piece_image = $("#public-piece-" + piece_id + "-hidden-for-img").val();
         var piece_slug = $("#public-piece-" + piece_id + "-hidden-for-slug").val();
 
@@ -211,6 +178,7 @@ function onIndividualPieceSelection(piece_id){
         var piece_price_sale = $("#public-piece-" + piece_id + "-hidden-for-price_sale").val();
         
         var html_ul_details = "<ul class='aawp-li-style-none'>";
+
         if(piece_medium !== undefined && piece_medium !== "undefined")
         {
             html_ul_details += "<li>" + piece_medium + "</li>";
@@ -234,10 +202,13 @@ function onIndividualPieceSelection(piece_id){
         //     var inventory_number = $("#public-piece-" + piece_id + "-hidden-for-inventory_number").val();
         //     html_ul_details += "<li style='margin-top:1em'>Inventory Number: " + inventory_number + "</li>";
         // }
-        if($("#public-piece-" + piece_id + "-hidden-for-description").val() !== undefined && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "undefined" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "" && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== null && $("#public-piece-" + piece_id + "-hidden-for-description").val() !== "null")
+        if(piece_description !== undefined 
+            && piece_description !== "undefined" 
+            && piece_description !== "" 
+            && piece_description !== null 
+            && piece_description !== "null")
         {
-            var description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
-            html_ul_details += "<li style='margin-top:2em;>" + description + "</li>";
+            html_ul_details += "<li style='margin-top:2em;'>" + piece_description + "</li>";
         }
         html_ul_details += "</ul>";
 
@@ -283,7 +254,6 @@ function getIndividualPieceInfo(artist_slug, piece_slug)
     var piece_id = $("#"+piece_slug).val();
     if(piece_id != undefined)
     {
-        console.log('piece is already cached');
         onIndividualPieceSelection(piece_id);
         return true;
     }
@@ -298,13 +268,11 @@ function getIndividualPieceInfo(artist_slug, piece_slug)
             complete: function (response) {
                 //if response success parse json response to HTML
                 var json_decoded = JSON.parse(response.responseText);
-                //console.log(json_decoded);
                 generateHTMLHiddensForIndividualPiece(json_decoded);
                 onIndividualPieceSelection(json_decoded.id);
                 $('#main_loader').hide();
             },
             error: function () {
-                console.log('TODO: there was an error!');
                 $('#main_loader').hide();
             },
         });
@@ -336,17 +304,13 @@ function onPageLoad(artist_slug)
             
             //read page parameters
             var piece_slug = getUrlVars()["piece"];
-            //console.log("url paramters (slug): " + slug);
 
             if(piece_slug != undefined)
             {
-                console.log("View A Single Piece....");
                 var pieceInfo = getIndividualPieceInfo(artist_slug, piece_slug);
-                console.log("pieceInfo: "+ pieceInfo);
             }
             else
             {
-                console.log("View ALL Pieces....");
                 //set the actual selected page with color
                 $('#page-selection-number-'+page).css('color', '#00c4ff');
             }
@@ -355,7 +319,6 @@ function onPageLoad(artist_slug)
 
         },
         error: function () {
-            console.log('TODO: there was an error!');
             $('#main_loader').hide();
             return false;
         },

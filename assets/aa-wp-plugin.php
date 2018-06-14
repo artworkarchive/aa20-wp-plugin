@@ -31,8 +31,6 @@ function get_user_public_gallery($atts){
 		<div id="aawp-popup-piece-details">
 			<p>[binded on runtime]</p>
 		</div>
-		<!-- <a id="customCloseButton" href="javascript:">Close</a> -->
-		<a class="aawp-close-modal-button" onclick="onCloseButtonClick()" href="javascript:">Close</a>
 	</div>
 	<!-- open the modal thru this button using code on runtime -->
 	<a class="aawp-open-modalpoup-button" href="#pieceViewer" rel="modal:open">[hidden]</a>
