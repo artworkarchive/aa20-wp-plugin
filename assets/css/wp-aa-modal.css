@@ -3,6 +3,7 @@
     overflow: scroll;
     max-width: 900px;
     margin: 4em 0;
+    text-align: center;
 }
 
 #pieceViewer.modal a.close-modal {

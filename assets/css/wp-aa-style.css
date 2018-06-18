@@ -176,8 +176,13 @@ ul.no-pad-bottom {
 
 .aawp-plugin-footer
 {
-  margin-top: 4em;
+  margin-top: 5em;
   text-align: center;
+  font-size: 0.8em;
+  color: #aaa;
+}
+.aawp-plugin-footer a {
+  color: #aaa;
 }
 
 /* @media (max-width: 768px) {
