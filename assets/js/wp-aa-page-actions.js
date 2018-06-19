@@ -156,6 +156,14 @@ function onPageSelection(artist_slug, total_pages, page, page_size)
     return false;
 }
 
+function isPresent(value) {
+    return value !== undefined
+        && value !== "undefined"
+        && value !== ""
+        && value !== null
+        && value !== "null";
+}
+
 function onIndividualPieceSelection(piece_id){
     
     //if selected piece is present on actual page
@@ -179,20 +187,20 @@ function onIndividualPieceSelection(piece_id){
         
         var html_ul_details = "<ul class='aawp-li-style-none'>";
 
-        if(piece_medium !== undefined && piece_medium !== "undefined")
+        if(isPresent(piece_medium))
         {
             html_ul_details += "<li>" + piece_medium + "</li>";
         }
-        if(piece_height !== undefined && piece_width !== undefined)
+        if(isPresent(piece_height) && isPresent(piece_width))
         {
             html_ul_details += "<li>" + piece_height + " x " + piece_width + "</li>";
         }
-        if(piece_price_sale !== undefined && piece_price_sale !== "undefined")
+        if(isPresent(piece_price_sale))
         {
             html_ul_details += "<li>" + piece_price_sale + "</li>";
         }
 
-        if($("#public-piece-" + piece_id + "-hidden-for-price").val() !== undefined)
+        if(isPresent($("#public-piece-" + piece_id + "-hidden-for-price").val()))
         {
             var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
             html_ul_details += "<li>" + piece_price + "</li>";
@@ -202,11 +210,7 @@ function onIndividualPieceSelection(piece_id){
         //     var inventory_number = $("#public-piece-" + piece_id + "-hidden-for-inventory_number").val();
         //     html_ul_details += "<li style='margin-top:1em'>Inventory Number: " + inventory_number + "</li>";
         // }
-        if(piece_description !== undefined 
-            && piece_description !== "undefined" 
-            && piece_description !== "" 
-            && piece_description !== null 
-            && piece_description !== "null")
+        if(isPresent(piece_description))
         {
             html_ul_details += "<li style='margin-top:2em;'>" + piece_description + "</li>";
         }
