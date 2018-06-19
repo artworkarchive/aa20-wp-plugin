@@ -41,7 +41,7 @@ function generateHTMLForPieces(json_decoded)
     for (var i = 0; i < json_decoded.public_pieces.length; i++) {
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_large_url + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-id' value='" + json_decoded.public_pieces[i].id + "' />";
-        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-name' value='" + json_decoded.public_pieces[i].short_name + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-name' value='" + json_decoded.public_pieces[i].name + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-description' value='" + json_decoded.public_pieces[i].description + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-slug' value='" + json_decoded.public_pieces[i].slug + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-medium' value='" + json_decoded.public_pieces[i].medium + "' />";
@@ -61,7 +61,7 @@ function generateHTMLForPieces(json_decoded)
         '<div class="aawp-overlay">' +
             '<div class="aawp-overlay-text">' +
                 '<ul class="aawp-li-style-none no-pad-bottom">' +
-                    '<li>' + json_decoded.public_pieces[i].short_name + '</li>';
+                    '<li>' + json_decoded.public_pieces[i].name + '</li>';
                     if(json_decoded.public_pieces[i].price != undefined)
                     {
                         html +='<li>' + json_decoded.public_pieces[i].price + '</li>';
