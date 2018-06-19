@@ -1,7 +1,5 @@
-//LOCALHOST
-//var api_url = "http://localhost:6020/api/profile/";
-//STAGING ENVIRONMENT
-var api_url =  "https://staging.artworkarchive.com/api/profile/";
+
+var api_url =  "https://www.artworkarchive.com/api/profile/";
 
 var page = 1;
 var page_size = 20;
