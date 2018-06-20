@@ -12,7 +12,7 @@ Just need to have a WordPress website already running.
 
 ### Installing
 
-[Install Artwork Archive WordPress Plugin](http://public.aeonitgroup.com/aeon/artworkarchive/aa20-wp-plugin/guide.pdf) then just go to your WordPress website Dashboard and add this plugin, then just add the following line to any WordPress page: `[artworkarchive_portfolio_embed user_slug="your-artist-name"]` and replace `your-artist-name` with your artwork archive artist name
+Go to your WordPress website Dashboard and add this plugin, then just add the following line to any WordPress page: `[artworkarchive_portfolio_embed user_slug="your-artist-name"]` and replace `your-artist-name` with your artwork archive artist slug (the last part of your public profile url)
 
 ### Examples
 * [Artwork Archive Working API Example](https://staging.artworkarchive.com/api/profile/sophia-rouhana) - Artwork Archive API Sample Call For Artist Called "Sophia Rouhana"
