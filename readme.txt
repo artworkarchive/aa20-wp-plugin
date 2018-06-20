@@ -1,5 +1,4 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
 Tags: artwork, art, artists
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,10 +11,6 @@ For Artwork Archive users with a Public Profile page, this allows you to embed y
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 1. Install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Create a new WordPress Page or edit an existing page to add the "short link" to embed the portfolio
@@ -25,7 +20,6 @@ e.g.
 = Who does this work for =
 
 Anyone with an Artwork Archive account who has a Public Profile setup.
-
 
 == Changelog ==
 
