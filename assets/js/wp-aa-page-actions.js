@@ -20,14 +20,8 @@ function generateHTMLHiddensForIndividualPiece(json_decoded)
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-description' value='" + json_decoded.description + "' />";
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-slug' value='" + json_decoded.slug + "' />";
     html_hiddens += "<input type=hidden id='" + json_decoded.slug + "' value='" + json_decoded.id + "' />";
-    if(json_decoded.price != undefined)
-    {
-        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-price' value='" + json_decoded.price + "' />";
-    }
-    if(json_decoded.inventory_number != undefined)
-    {
-        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-inventory_number' value='" + json_decoded.inventory_number + "' />";
-    }
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-price' value='" + json_decoded.price + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-inventory_number' value='" + json_decoded.inventory_number + "' />";
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-subject_matter' value='" + json_decoded.subject_matter + "' />";
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-framed_height' value='" + json_decoded.framed_height + "' />";
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-framed_width' value='" + json_decoded.framed_width + "' />";
@@ -81,7 +75,7 @@ function generateHTMLForPieces(json_decoded)
 
         //create collections string
         var piece_colletions = "";
-        if (Array.isArray(json_decoded.collections))
+        if (Array.isArray(json_decoded.public_pieces[i].collections))
         {
             for (var j = 0; j < json_decoded.public_pieces[i].collections.length; j++)
             {
@@ -251,10 +245,6 @@ function onIndividualPieceSelection(piece_id){
         {
             html_ul_details += "<li>" + piece_price_sale + "</li>";
         }
-        if(isPresent(piece_subject_matter))
-        {
-            html_ul_details += "<li>Subject Matter: " + piece_subject_matter + "</li>";
-        }
         if(isPresent(piece_framed) && isPresent(piece_framed_size_str))
         {
             html_ul_details += "<li>Framed: " + piece_framed_size_str + " </li>";
@@ -263,13 +253,17 @@ function onIndividualPieceSelection(piece_id){
         {
             html_ul_details += "<li>Created: " + piece_creation_date_display + "</li>";
         }
-        if(isPresent(piece_collections))
-        {
-            html_ul_details += "<li>Collections: " + piece_collections + "</li>";
-        }
         if(isPresent(piece_price))
         {
             html_ul_details += "<li>" + piece_price + "</li>";
+        }
+        if(isPresent(piece_subject_matter))
+        {
+            html_ul_details += "<li style='margin-top:2em;'>Subject Matter: " + piece_subject_matter + "</li>";
+        }
+        if(isPresent(piece_collections))
+        {
+            html_ul_details += "<li>Collections: " + piece_collections + "</li>";
         }
         if(isPresent(piece_description))
         {
