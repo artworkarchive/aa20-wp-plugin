@@ -17,6 +17,7 @@ function generateHTMLHiddensForIndividualPiece(json_decoded)
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-img' value='" + json_decoded.primary_image_medium_url + "' />";
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-id' value='" + json_decoded.id + "' />";
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-name' value='" + json_decoded.name + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-description' value='" + json_decoded.description + "' />";
     html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-slug' value='" + json_decoded.slug + "' />";
     html_hiddens += "<input type=hidden id='" + json_decoded.slug + "' value='" + json_decoded.id + "' />";
     if(json_decoded.price != undefined)
@@ -27,6 +28,27 @@ function generateHTMLHiddensForIndividualPiece(json_decoded)
     {
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-inventory_number' value='" + json_decoded.inventory_number + "' />";
     }
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-subject_matter' value='" + json_decoded.subject_matter + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-framed_height' value='" + json_decoded.framed_height + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-framed_width' value='" + json_decoded.framed_width + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-framed_depth' value='" + json_decoded.framed_depth + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-framed' value='" + json_decoded.framed + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-creation_date_display' value='" + json_decoded.creation_date_display + "' />";
+    
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-framed_size_str' value='" + json_decoded.framed_size_str + "' />";
+    html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-size_str' value='" + json_decoded.size_str + "' />";
+    
+    //create collections string
+    var piece_colletions = "";
+    if (Array.isArray(json_decoded.collections))
+    {
+        for (var j = 0; j < json_decoded.collections.length; j++)
+        {
+            piece_colletions += json_decoded.collections[j].name + " ";
+        }
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-collections' value='" + piece_colletions + "' />";
+    }
+
     $('#aawp-data-section').append(html_hiddens);
 }
 
@@ -46,7 +68,28 @@ function generateHTMLForPieces(json_decoded)
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-height' value='" + json_decoded.public_pieces[i].height + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-width' value='" + json_decoded.public_pieces[i].width + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-price_sale' value='" + json_decoded.public_pieces[i].price_sale + "' />";
-        
+
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-subject_matter' value='" + json_decoded.public_pieces[i].subject_matter + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-framed_height' value='" + json_decoded.public_pieces[i].framed_height + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-framed_width' value='" + json_decoded.public_pieces[i].framed_width + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-framed_depth' value='" + json_decoded.public_pieces[i].framed_depth + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-framed' value='" + json_decoded.public_pieces[i].framed + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-creation_date_display' value='" + json_decoded.public_pieces[i].creation_date_display + "' />";
+
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-framed_size_str' value='" + json_decoded.public_pieces[i].framed_size_str + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-size_str' value='" + json_decoded.public_pieces[i].size_str + "' />";
+
+        //create collections string
+        var piece_colletions = "";
+        if (Array.isArray(json_decoded.collections))
+        {
+            for (var j = 0; j < json_decoded.public_pieces[i].collections.length; j++)
+            {
+                piece_colletions += json_decoded.public_pieces[i].collections[j].name + " ";
+            }
+            html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-collections' value='" + piece_colletions + "' />";
+        }
+
         html_hiddens += "<input type=hidden id='" + json_decoded.public_pieces[i].slug + "' value='" + json_decoded.public_pieces[i].id + "' />";
         if(json_decoded.public_pieces[i].price != undefined)
         {
@@ -176,38 +219,58 @@ function onIndividualPieceSelection(piece_id){
         var piece_description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
         var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
         var piece_image = $("#public-piece-" + piece_id + "-hidden-for-img").val();
-        var piece_slug = $("#public-piece-" + piece_id + "-hidden-for-slug").val();
+        //var piece_slug = $("#public-piece-" + piece_id + "-hidden-for-slug").val();
 
         var piece_medium = $("#public-piece-" + piece_id + "-hidden-for-medium").val();
-        var piece_height = $("#public-piece-" + piece_id + "-hidden-for-height").val();
-        var piece_width = $("#public-piece-" + piece_id + "-hidden-for-width").val();
+        var piece_size_str = $("#public-piece-" + piece_id + "-hidden-for-size_str").val();
+        //var piece_height = $("#public-piece-" + piece_id + "-hidden-for-height").val();
+        //var piece_width = $("#public-piece-" + piece_id + "-hidden-for-width").val();
         var piece_price_sale = $("#public-piece-" + piece_id + "-hidden-for-price_sale").val();
-        
+        var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
+
+        var piece_subject_matter = $("#public-piece-" + piece_id + "-hidden-for-subject_matter").val();
+        //var piece_framed_height = $("#public-piece-" + piece_id + "-hidden-for-framed_height").val();
+        //var piece_framed_width = $("#public-piece-" + piece_id + "-hidden-for-framed_width").val();
+        //var piece_framed_depth = $("#public-piece-" + piece_id + "-hidden-for-framed_depth").val();
+        var piece_framed = $("#public-piece-" + piece_id + "-hidden-for-framed").val();
+        var piece_framed_size_str = $("#public-piece-" + piece_id + "-hidden-for-framed_size_str").val();
+        var piece_creation_date_display = $("#public-piece-" + piece_id + "-hidden-for-creation_date_display").val();
+        var piece_collections = $("#public-piece-" + piece_id + "-hidden-for-collections").val();
+
         var html_ul_details = "<ul class='aawp-li-style-none'>";
 
         if(isPresent(piece_medium))
         {
             html_ul_details += "<li>" + piece_medium + "</li>";
         }
-        if(isPresent(piece_height) && isPresent(piece_width))
+        if(isPresent(piece_size_str))
         {
-            html_ul_details += "<li>" + piece_height + " x " + piece_width + "</li>";
+            html_ul_details += "<li>" + piece_size_str + "</li>";
         }
         if(isPresent(piece_price_sale))
         {
             html_ul_details += "<li>" + piece_price_sale + "</li>";
         }
-
-        if(isPresent($("#public-piece-" + piece_id + "-hidden-for-price").val()))
+        if(isPresent(piece_subject_matter))
         {
-            var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
+            html_ul_details += "<li>Subject Matter: " + piece_subject_matter + "</li>";
+        }
+        if(isPresent(piece_framed) && isPresent(piece_framed_size_str))
+        {
+            html_ul_details += "<li>Framed: " + piece_framed_size_str + " </li>";
+        }
+        if(isPresent(piece_creation_date_display))
+        {
+            html_ul_details += "<li>Created: " + piece_creation_date_display + "</li>";
+        }
+        if(isPresent(piece_collections))
+        {
+            html_ul_details += "<li>Collections: " + piece_collections + "</li>";
+        }
+        if(isPresent(piece_price))
+        {
             html_ul_details += "<li>" + piece_price + "</li>";
         }
-        // if($("#public-piece-" + piece_id + "-hidden-for-inventory_number").val() !== undefined)
-        // {
-        //     var inventory_number = $("#public-piece-" + piece_id + "-hidden-for-inventory_number").val();
-        //     html_ul_details += "<li style='margin-top:1em'>Inventory Number: " + inventory_number + "</li>";
-        // }
         if(isPresent(piece_description))
         {
             html_ul_details += "<li style='margin-top:2em;'>" + piece_description + "</li>";
