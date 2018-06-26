@@ -18,7 +18,9 @@ function get_user_public_gallery($atts){
 
 	$js_script =  
 	'<script type="text/javascript">
+	jQuery(document).ready(function($) {
 		onPageLoad("'.$user_slug.'");
+	});
 	</script>';
 
 	$html = '
