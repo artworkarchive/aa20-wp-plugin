@@ -63,5 +63,7 @@ $my_artist_slug = 'sophia-rouhana';
 <link href="assets/css/wp-aa-jquery-modal-min.css" rel="stylesheet">
 
 <script type="text/javascript">
-		onPageLoad("<?php echo $my_artist_slug ?>");
+jQuery(document).ready(function($) {
+    onPageLoad("<?php echo $my_artist_slug ?>");
+});
 </script>
