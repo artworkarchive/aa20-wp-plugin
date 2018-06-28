@@ -202,7 +202,7 @@ function isPresent(value) {
 function onIndividualPieceSelection(piece_id){
     
     //if selected piece is present on actual page
-    if(jQuery("#public-piece-" + piece_id + "-hidden-for-id").val() != undefined && jQuery("#public-piece-" + piece_id + "-hidden-for-id").val() != '')
+    if(isPresent(jQuery("#public-piece-" + piece_id + "-hidden-for-id").val() != undefined))
     {
         jQuery("#aawp-popup-piece-image").attr("src","");
         jQuery("#aawp-popup-piece-name").text("");
