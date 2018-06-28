@@ -43,15 +43,15 @@ function generateHTMLHiddensForIndividualPiece(json_decoded)
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.id + "-hidden-for-collections' value='" + piece_colletions + "' />";
     }
 
-    $('#aawp-data-section').append(html_hiddens);
+    jQuery('#aawp-data-section').append(html_hiddens);
 }
 
 function generateHTMLForPieces(json_decoded)
 {
     var html = "";
     var html_hiddens = "";
-    $('#aawp-pieces-section').html("");
-    $('#aawp-data-section').html("");
+    jQuery('#aawp-pieces-section').html("");
+    jQuery('#aawp-data-section').html("");
     for (var i = 0; i < json_decoded.public_pieces.length; i++) {
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-img' value='" + json_decoded.public_pieces[i].primary_image_large_url + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-id' value='" + json_decoded.public_pieces[i].id + "' />";
@@ -107,12 +107,12 @@ function generateHTMLForPieces(json_decoded)
         '</a>' +
       '</div>';
     }
-    $('#aawp-data-section').html(html_hiddens);
-    $('#aawp-pieces-section').html(html);
+    jQuery('#aawp-data-section').html(html_hiddens);
+    jQuery('#aawp-pieces-section').html(html);
     salvattore.registerGrid(document.querySelector('#aawp-pieces-section'));
 
     // Handle modal closing url updates.
-    $(document).on($.modal.AFTER_CLOSE, function (event, modal) {
+    jQuery(document).on(jQuery.modal.AFTER_CLOSE, function (event, modal) {
         // clear piece query param
         removePieceQueryParam();
     });
@@ -120,9 +120,9 @@ function generateHTMLForPieces(json_decoded)
 
 function generateHTMLForPagination(json_decoded)
 {
-    var user_slug = $('#aawp-user-slug').val();
+    var user_slug = jQuery('#aawp-user-slug').val();
 
-    $('#aawp-pagination-section').html("");
+    jQuery('#aawp-pagination-section').html("");
     var html_pagination_control = "";
 
     html_pagination_control += '<a style="color:#333;" href="#" onclick="showPrevPublicPiecesPage(&quot;'+user_slug+'&quot;,'+(json_decoded.total_pages)+','+(json_decoded.page_size)+')">«</a>';
@@ -131,14 +131,14 @@ function generateHTMLForPagination(json_decoded)
     }
     html_pagination_control += '<a style="color:#333;" href="#" onclick="showNextPublicPiecesPage(&quot;'+user_slug+'&quot;,'+(json_decoded.total_pages)+','+(json_decoded.page_size)+')">»</a>';
 
-    $('#aawp-pagination-section').html(html_pagination_control);
+    jQuery('#aawp-pagination-section').html(html_pagination_control);
 }
 
 function unselectPaginControl(total_pages)
 {
     //set all pagination control with black color
     for (var i = 0; i < total_pages; i++) {
-        $('#page-selection-number-'+(i+1)).css('color', '#333');
+        jQuery('#page-selection-number-'+(i+1)).css('color', '#333');
     }
 }
 
@@ -169,23 +169,23 @@ function showPrevPublicPiecesPage(artist_slug, total_pages, page_size)
 function onPageSelection(artist_slug, total_pages, page, page_size)
 {
     //show loader
-    $('#main_loader').show();
+    jQuery('#main_loader').show();
     //remove previously selected pages color
     unselectPaginControl(total_pages);
     //set the actual selected page with red color
-    $('#page-selection-number-'+page).css('color', '#00c4ff');
+    jQuery('#page-selection-number-'+page).css('color', '#00c4ff');
     
     var final_url = api_url + artist_slug + '?page=' + page + '&page_size=' + page_size;
     //call api pieces with pagination
-    $.ajax({
+    jQuery.ajax({
         url: final_url,
         complete: function (response) {
             var jsonobj = JSON.parse(response.responseText);
             generateHTMLForPieces(jsonobj);
-            $('#main_loader').hide();
+            jQuery('#main_loader').hide();
         },
         error: function () {
-            $('#main_loader').hide();
+            jQuery('#main_loader').hide();
         },
     });
     return false;
@@ -202,34 +202,34 @@ function isPresent(value) {
 function onIndividualPieceSelection(piece_id){
     
     //if selected piece is present on actual page
-    if($("#public-piece-" + piece_id + "-hidden-for-id").val() != undefined && $("#public-piece-" + piece_id + "-hidden-for-id").val() != '')
+    if(jQuery("#public-piece-" + piece_id + "-hidden-for-id").val() != undefined && jQuery("#public-piece-" + piece_id + "-hidden-for-id").val() != '')
     {
-        $("#aawp-popup-piece-image").attr("src","");
-        $("#aawp-popup-piece-name").text("");
-        $("#aawp-popup-piece-details").html("");
+        jQuery("#aawp-popup-piece-image").attr("src","");
+        jQuery("#aawp-popup-piece-name").text("");
+        jQuery("#aawp-popup-piece-details").html("");
 
-        var piece_id = $("#public-piece-" + piece_id + "-hidden-for-id").val();
-        var piece_name = $("#public-piece-" + piece_id + "-hidden-for-name").val();
-        var piece_description = $("#public-piece-" + piece_id + "-hidden-for-description").val();
-        var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
-        var piece_image = $("#public-piece-" + piece_id + "-hidden-for-img").val();
-        //var piece_slug = $("#public-piece-" + piece_id + "-hidden-for-slug").val();
+        var piece_id = jQuery("#public-piece-" + piece_id + "-hidden-for-id").val();
+        var piece_name = jQuery("#public-piece-" + piece_id + "-hidden-for-name").val();
+        var piece_description = jQuery("#public-piece-" + piece_id + "-hidden-for-description").val();
+        var piece_price = jQuery("#public-piece-" + piece_id + "-hidden-for-price").val();
+        var piece_image = jQuery("#public-piece-" + piece_id + "-hidden-for-img").val();
+        //var piece_slug = jQuery("#public-piece-" + piece_id + "-hidden-for-slug").val();
 
-        var piece_medium = $("#public-piece-" + piece_id + "-hidden-for-medium").val();
-        var piece_size_str = $("#public-piece-" + piece_id + "-hidden-for-size_str").val();
-        //var piece_height = $("#public-piece-" + piece_id + "-hidden-for-height").val();
-        //var piece_width = $("#public-piece-" + piece_id + "-hidden-for-width").val();
-        var piece_price_sale = $("#public-piece-" + piece_id + "-hidden-for-price_sale").val();
-        var piece_price = $("#public-piece-" + piece_id + "-hidden-for-price").val();
+        var piece_medium = jQuery("#public-piece-" + piece_id + "-hidden-for-medium").val();
+        var piece_size_str = jQuery("#public-piece-" + piece_id + "-hidden-for-size_str").val();
+        //var piece_height = jQuery("#public-piece-" + piece_id + "-hidden-for-height").val();
+        //var piece_width = jQuery("#public-piece-" + piece_id + "-hidden-for-width").val();
+        var piece_price_sale = jQuery("#public-piece-" + piece_id + "-hidden-for-price_sale").val();
+        var piece_price = jQuery("#public-piece-" + piece_id + "-hidden-for-price").val();
 
-        var piece_subject_matter = $("#public-piece-" + piece_id + "-hidden-for-subject_matter").val();
-        //var piece_framed_height = $("#public-piece-" + piece_id + "-hidden-for-framed_height").val();
-        //var piece_framed_width = $("#public-piece-" + piece_id + "-hidden-for-framed_width").val();
-        //var piece_framed_depth = $("#public-piece-" + piece_id + "-hidden-for-framed_depth").val();
-        var piece_framed = $("#public-piece-" + piece_id + "-hidden-for-framed").val();
-        var piece_framed_size_str = $("#public-piece-" + piece_id + "-hidden-for-framed_size_str").val();
-        var piece_creation_date_display = $("#public-piece-" + piece_id + "-hidden-for-creation_date_display").val();
-        var piece_collections = $("#public-piece-" + piece_id + "-hidden-for-collections").val();
+        var piece_subject_matter = jQuery("#public-piece-" + piece_id + "-hidden-for-subject_matter").val();
+        //var piece_framed_height = jQuery("#public-piece-" + piece_id + "-hidden-for-framed_height").val();
+        //var piece_framed_width = jQuery("#public-piece-" + piece_id + "-hidden-for-framed_width").val();
+        //var piece_framed_depth = jQuery("#public-piece-" + piece_id + "-hidden-for-framed_depth").val();
+        var piece_framed = jQuery("#public-piece-" + piece_id + "-hidden-for-framed").val();
+        var piece_framed_size_str = jQuery("#public-piece-" + piece_id + "-hidden-for-framed_size_str").val();
+        var piece_creation_date_display = jQuery("#public-piece-" + piece_id + "-hidden-for-creation_date_display").val();
+        var piece_collections = jQuery("#public-piece-" + piece_id + "-hidden-for-collections").val();
 
         var html_ul_details = "<ul class='aawp-li-style-none'>";
 
@@ -271,12 +271,12 @@ function onIndividualPieceSelection(piece_id){
         }
         html_ul_details += "</ul>";
 
-        $("#aawp-popup-piece-image").attr("src",piece_image);
-        $("#aawp-popup-piece-name").text(piece_name);
-        $("#aawp-popup-piece-details").html(html_ul_details);
+        jQuery("#aawp-popup-piece-image").attr("src",piece_image);
+        jQuery("#aawp-popup-piece-name").text(piece_name);
+        jQuery("#aawp-popup-piece-details").html(html_ul_details);
     
         //show modal
-        $('a.aawp-open-modalpoup-button')[0].click();
+        jQuery('a.aawp-open-modalpoup-button')[0].click();
     }
 }
 
@@ -310,7 +310,7 @@ function getUrlVars()
 
 function getIndividualPieceInfo(artist_slug, piece_slug)
 {
-    var piece_id = $("#"+piece_slug).val();
+    var piece_id = jQuery("#"+piece_slug).val();
     if(piece_id != undefined)
     {
         onIndividualPieceSelection(piece_id);
@@ -319,20 +319,20 @@ function getIndividualPieceInfo(artist_slug, piece_slug)
     else
     {
         //show loader
-        $('#main_loader').show();
+        jQuery('#main_loader').show();
         var final_url = api_url + artist_slug + '/piece/' + piece_slug;
         //get piece from the api using the piece slug name directly
-        $.ajax({
+        jQuery.ajax({
             url: final_url,
             complete: function (response) {
                 //if response success parse json response to HTML
                 var json_decoded = JSON.parse(response.responseText);
                 generateHTMLHiddensForIndividualPiece(json_decoded);
                 onIndividualPieceSelection(json_decoded.id);
-                $('#main_loader').hide();
+                jQuery('#main_loader').hide();
             },
             error: function () {
-                $('#main_loader').hide();
+                jQuery('#main_loader').hide();
             },
         });
     }
@@ -342,7 +342,7 @@ function onPageLoad(artist_slug)
 {
 
     //show loader
-    $('#main_loader').show();
+    jQuery('#main_loader').show();
 
     //create HTML actual page pieces
 
@@ -351,13 +351,13 @@ function onPageLoad(artist_slug)
     var html = '';
 
     //call api pieces with pagination
-    $.ajax({
+    jQuery.ajax({
         url: final_url,
         complete: function (response) {
             //if response success parse json response to HTML
             var json_decoded = JSON.parse(response.responseText);
-            $('#aawp-user-slug').val("");
-            $('#aawp-user-slug').val(artist_slug);
+            jQuery('#aawp-user-slug').val("");
+            jQuery('#aawp-user-slug').val(artist_slug);
             generateHTMLForPieces(json_decoded);
             generateHTMLForPagination(json_decoded);
             
@@ -371,14 +371,14 @@ function onPageLoad(artist_slug)
             else
             {
                 //set the actual selected page with color
-                $('#page-selection-number-'+page).css('color', '#00c4ff');
+                jQuery('#page-selection-number-'+page).css('color', '#00c4ff');
             }
 
-            $('#main_loader').hide();
+            jQuery('#main_loader').hide();
 
         },
         error: function () {
-            $('#main_loader').hide();
+            jQuery('#main_loader').hide();
             return false;
         },
     });
