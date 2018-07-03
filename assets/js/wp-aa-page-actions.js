@@ -61,7 +61,7 @@ function generateHTMLForPieces(json_decoded)
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-medium' value='" + json_decoded.public_pieces[i].medium + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-height' value='" + json_decoded.public_pieces[i].height + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-width' value='" + json_decoded.public_pieces[i].width + "' />";
-        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-price_sale' value='" + json_decoded.public_pieces[i].price_sale + "' />";
+        html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-sale_status' value='" + json_decoded.public_pieces[i].sale_status + "' />";
 
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-subject_matter' value='" + json_decoded.public_pieces[i].subject_matter + "' />";
         html_hiddens += "<input type=hidden id='public-piece-" + json_decoded.public_pieces[i].id + "-hidden-for-framed_height' value='" + json_decoded.public_pieces[i].framed_height + "' />";
@@ -219,7 +219,7 @@ function onIndividualPieceSelection(piece_id){
         var piece_size_str = jQuery("#public-piece-" + piece_id + "-hidden-for-size_str").val();
         //var piece_height = jQuery("#public-piece-" + piece_id + "-hidden-for-height").val();
         //var piece_width = jQuery("#public-piece-" + piece_id + "-hidden-for-width").val();
-        var piece_price_sale = jQuery("#public-piece-" + piece_id + "-hidden-for-price_sale").val();
+        var piece_sale_status = jQuery("#public-piece-" + piece_id + "-hidden-for-sale_status").val();
         var piece_price = jQuery("#public-piece-" + piece_id + "-hidden-for-price").val();
 
         var piece_subject_matter = jQuery("#public-piece-" + piece_id + "-hidden-for-subject_matter").val();
@@ -241,9 +241,9 @@ function onIndividualPieceSelection(piece_id){
         {
             html_ul_details += "<li>" + piece_size_str + "</li>";
         }
-        if(isPresent(piece_price_sale))
+        if(isPresent(piece_sale_status))
         {
-            html_ul_details += "<li>" + piece_price_sale + "</li>";
+            html_ul_details += "<li>" + piece_sale_status + "</li>";
         }
         if(isPresent(piece_framed) && isPresent(piece_framed_size_str))
         {
