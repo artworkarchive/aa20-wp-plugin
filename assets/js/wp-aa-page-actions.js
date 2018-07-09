@@ -271,12 +271,12 @@ function onIndividualPieceSelection(piece_id){
         }
         html_ul_details += "</ul>";
 
-        jQuery("#aawp-popup-piece-image").attr("src",piece_image);
-        jQuery("#aawp-popup-piece-name").text(piece_name);
-        jQuery("#aawp-popup-piece-details").html(html_ul_details);
-    
-        //show modal
-        jQuery('a.aawp-open-modalpoup-button')[0].click();
+        var modal_popup_html = '<img id="aawp-popup-piece-image" src="'+piece_image+'" alt="Public Piece Image" class="image">';
+		modal_popup_html += '<p id="aawp-popup-piece-name">'+piece_name+'</p>';
+		modal_popup_html += '<div id="aawp-popup-piece-details">';
+		modal_popup_html += '<p>'+html_ul_details+'</p>';
+
+        jQuery("<div>"+modal_popup_html+"</div>").appendTo('body').modal();
     }
 }
 

@@ -28,11 +28,7 @@ function get_user_public_gallery($atts){
 
 	<!-- Common Modal Popup -->
 	<div id="pieceViewer" class="modal">
-		<img id="aawp-popup-piece-image" src="" alt="Public Piece Image" class="image">
-		<p id="aawp-popup-piece-name">[binded on runtime]</p>
-		<div id="aawp-popup-piece-details">
-			<p>[binded on runtime]</p>
-		</div>
+		[binded on runtime]
 	</div>
 	<!-- open the modal thru this button using code on runtime -->
 	<a class="aawp-open-modalpoup-button" href="#pieceViewer" rel="modal:open">[hidden]</a>
