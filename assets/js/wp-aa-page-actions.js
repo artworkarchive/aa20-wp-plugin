@@ -276,7 +276,8 @@ function onIndividualPieceSelection(piece_id){
 		modal_popup_html += '<div id="aawp-popup-piece-details">';
 		modal_popup_html += '<p>'+html_ul_details+'</p>';
 
-        jQuery("<div>"+modal_popup_html+"</div>").appendTo('body').modal();
+        //show jquery modal popup
+        jQuery("<div id='pieceViewer' class='modal'>"+modal_popup_html+"</div>").appendTo('body').modal();
     }
 }
 

@@ -25,13 +25,6 @@ function get_user_public_gallery($atts){
 
 	$html = '
 	<!-- Artwork Archive WordPress Plugin Base Layout -->
-
-	<!-- Common Modal Popup -->
-	<div id="pieceViewer" class="modal">
-		[binded on runtime]
-	</div>
-	<!-- open the modal thru this button using code on runtime -->
-	<a class="aawp-open-modalpoup-button" href="#pieceViewer" rel="modal:open">[hidden]</a>
 	
 	<!-- Gallery -->
 	<div class="aawp-plugin-container">
