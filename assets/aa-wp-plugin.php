@@ -51,7 +51,7 @@ function get_user_public_gallery($atts){
 	</div>
 
 	<div class="aawp-plugin-footer">
-		Powered by <a href="https://www.artworkarchive.com/" target="blank">Artwork Archive</a>
+		Powered by <a href="https://www.artworkarchive.com/" target="_blank">Artwork Archive</a>
 	</div>';
 
 	echo $html.$js_script;
